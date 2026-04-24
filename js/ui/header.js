@@ -52,8 +52,9 @@
                         </div>
                     </div>
                 </div>
-
+                <a href="projetos-tracker.html" data-nav-link="Projetos" class="px-3 py-2 text-sm font-medium text-marrom hover:text-terra hover:bg-slate-50 rounded-lg transition-colors">Projetos</a>
                 <div class="w-px h-6 bg-slate-200 mx-1"></div>
+
                 <a href="index.html?view=all" data-view="all" data-perm="view_all" class="px-3 py-2 text-sm font-medium text-marrom hover:text-terra hover:bg-slate-50 rounded-lg transition-colors pr-0 pl-1">Todos os Registros</a>
             </div>
 
