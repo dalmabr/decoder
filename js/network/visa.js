@@ -680,7 +680,7 @@ const DE104_TAG_MAP = {
     '57-82': { name: 'Purpose of Payment', decoder: 'numeric' },
     '57-83': { name: 'Maximum Processing Date', decoder: 'numeric' },
     '57-02': { name: 'Source of Funds', decoder: 'numeric' },
-    '57-84': { name: 'Scheme Identifier', decoder: 'numeric' },
+    '57-84': { name: 'Scheme Identifier', decoder: 'ebcdic' },
     '58-01': { name: 'Benefit Administrator ID', decoder: 'numeric' },
     '58-02': { name: 'Service Type Code', decoder: 'numeric' },
     '58-03': { name: 'Payer ID/ Carrier ID', decoder: 'numeric' },
