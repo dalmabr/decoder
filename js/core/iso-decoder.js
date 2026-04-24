@@ -260,13 +260,13 @@ export function parseTLVDatase_OLD_t(field, options) {
         const fieldTotalLen = parseInt(hex.substr(pos, 2), 16);
         pos += 2;
         if (isNaN(fieldTotalLen) || fieldTotalLen <= 0) {
-            console.warn("[DE125] Comprimento do campo inválido");
+            console.warn("[DE125] Comprimento do campo invï¿½lido");
             return { value: field.rawHex, children: [] };
         }
         // Opcional: validar se fieldTotalLen * 2 == hex.length - 2
     }
 
-    // ?? Dataset ID fictício para TLV direto
+    // ?? Dataset ID fictï¿½cio para TLV direto
     const datasetId = '00';
     const datasetEnd = hex.length;
 
@@ -300,9 +300,9 @@ export function parseTLVDatase_OLD_t(field, options) {
             const currentTag = tag; 
             pos += 2;
 
-            // ?? VALIDAÇÃO CRÍTICA DE SEGURANÇA
+            // ?? VALIDAï¿½ï¿½O CRï¿½TICA DE SEGURANï¿½A
             if (isNaN(len) || len <= 0 || (pos + len * 2) > maxPos) {
-                console.warn(`[DE125] TLV inválido na pos ${pos}, tag=${tag}, len=${len}`);
+                console.warn(`[DE125] TLV invï¿½lido na pos ${pos}, tag=${tag}, len=${len}`);
                 break;
             }        
 
@@ -314,7 +314,7 @@ export function parseTLVDatase_OLD_t(field, options) {
             pos += len * 2;
 
             if (field.de === 125) {
-                // Dentro do while principal, após ler datasetLen
+                // Dentro do while principal, apï¿½s ler datasetLen
                 console.log(`[DEBUG DE125] Pos: ${pos}, DatasetID: ${datasetId}, LenRaw: ${hex.substr(pos-4, 4)}, LenCalc: ${datasetLen}, DatasetEnd: ${datasetEnd}, TotalHex: ${hex.length}`);                
             }
 
@@ -361,12 +361,12 @@ export function parseTLVDataset(field, options) {
     // ?? 1. Pular 1 byte de comprimento total do campo (se configurado)
     if (options?.hasFieldLengthByte) {
         if (pos + 2 > hex.length) return { value: field.rawHex, children: [] };
-        pos += 2; // Pula o byte de length (já sabemos que é DE125)
+        pos += 2; // Pula o byte de length (jï¿½ sabemos que ï¿½ DE125)
     }
 
-    // ?? 2. Loop para ler múltiplos DATASETS até acabar o hex
+    // ?? 2. Loop para ler mï¿½ltiplos DATASETS atï¿½ acabar o hex
     while (pos + 3 <= maxPos) {
-        // --- Ler cabeçalho do Dataset ---
+        // --- Ler cabeï¿½alho do Dataset ---
         const datasetTag = hex.substr(pos, 2);
         pos += 2;
 
@@ -376,7 +376,7 @@ export function parseTLVDataset(field, options) {
         pos += 4;
 
         if (isNaN(datasetLen) || datasetLen < 0) {
-            console.warn(`[DE] Dataset length inválido: ${datasetLen}`);
+            console.warn(`[DE] Dataset length invï¿½lido: ${datasetLen}`);
             break;
         }
 
@@ -394,9 +394,9 @@ export function parseTLVDataset(field, options) {
             const tlvLen = parseInt(hex.substr(pos, 2), 16);
             pos += 2;
 
-            // Validação de segurança
+            // Validaï¿½ï¿½o de seguranï¿½a
             if (isNaN(tlvLen) || tlvLen <= 0 || (pos + tlvLen * 2) > maxPos) {
-                console.warn(`[DE] TLV interno inválido: pos=${pos}, tag=${tlvTag}, len=${tlvLen}`);
+                console.warn(`[DE] TLV interno invï¿½lido: pos=${pos}, tag=${tlvTag}, len=${tlvLen}`);
                 break;
             }
 
@@ -514,7 +514,7 @@ function parseBitmapFromText(rawHexChunk) {
 }
 
 function readBitmaps(hex, state, network) {
-    // Visa: só usa modo texto se explicitamente configurado.
+    // Visa: sï¿½ usa modo texto se explicitamente configurado.
     if (network === 'visa' && NETWORK_CONFIG?.visa?.bitmapEncoding === 'text') {
         const probe = hex.slice(state.pos, state.pos + (32 * 2));
         const textBitmap = parseBitmapFromText(probe);
@@ -526,7 +526,7 @@ function readBitmaps(hex, state, network) {
         }
     }
 
-    // Padrão binário ISO8583.
+    // Padrï¿½o binï¿½rio ISO8583.
     const primaryHex = getBytes(hex, state, 8);
     const primaryBits = hexToBits(primaryHex);
     let secondaryBits = [];
@@ -580,7 +580,7 @@ function scoreVisaDataStart(hex, pos, allBits) {
 
 function adjustVisaDataStart(hex, pos, allBits) {
     // Testa pequenos deslocamentos de byte para alinhar DE2/DE3/DE4.
-    // Evita cenários em que existe byte intermediário entre MTI/bitmap/dados.
+    // Evita cenï¿½rios em que existe byte intermediï¿½rio entre MTI/bitmap/dados.
     const candidates = [0, 2, 4, 6, 8, 10, 12, 14, 16];
     let best = { pos, score: Number.NEGATIVE_INFINITY };
 
@@ -594,7 +594,7 @@ function adjustVisaDataStart(hex, pos, allBits) {
 function normalizeIncomingHex(raw) {
     const src = String(raw || '');
 
-    // Se houver delimitadores, confia neles para não truncar mensagem válida.
+    // Se houver delimitadores, confia neles para nï¿½o truncar mensagem vï¿½lida.
     const ini = src.toUpperCase().indexOf('<INI>');
     const fin = src.toUpperCase().indexOf('<FIN>');
     let payload = src;
@@ -605,21 +605,21 @@ function normalizeIncomingHex(raw) {
         payload = src.slice(ini + 5);
     }
 
-    // Remove apenas espaços/quebras. Mantém conteúdo íntegro.
+    // Remove apenas espaï¿½os/quebras. Mantï¿½m conteï¿½do ï¿½ntegro.
     payload = payload.replace(/\s+/g, '');
 
-    // Máscaras: Mastercard costuma mascarar bytes EBCDIC inteiros com '*'.
+    // Mï¿½scaras: Mastercard costuma mascarar bytes EBCDIC inteiros com '*'.
     // Ex.: "****************" (16 bytes) precisa manter 16 bytes => "F0" por byte.
     const upper = payload.toUpperCase();
     const looksLikeMastercard = upper.startsWith('F0F1F0F0') || upper.includes('F0F1F0F0FEE7');
     if (looksLikeMastercard) {
         payload = payload.replace(/[*?]/g, 'F0');
     } else {
-        // Visa/geral: mantém comportamento atual de nibble zero.
+        // Visa/geral: mantï¿½m comportamento atual de nibble zero.
         payload = payload.replace(/[*?]/g, '0');
     }
 
-    // Filtra para hex ao final, sem heurística de corte por "duplo espaço".
+    // Filtra para hex ao final, sem heurï¿½stica de corte por "duplo espaï¿½o".
     payload = payload.replace(/[^0-9A-Fa-f]/g, '');
 
     return payload.toUpperCase();
@@ -855,7 +855,7 @@ export function detectNetwork(rawHex) {
         };
     }
 
-    // Visa com header fixo (44 posições hex no seu tráfego).
+    // Visa com header fixo (44 posiï¿½ï¿½es hex no seu trï¿½fego).
     const visaPrimaryOffset = 44;
     const visaAtPrimary = detectMtiSpecAt(hex, visaPrimaryOffset);
     if (visaAtPrimary) {
@@ -1031,7 +1031,7 @@ export function decodeISO8583(hex, network) {
                     children: [],
                     error: 'missing_config'
                 });
-                break; // sem layout do DE não é seguro continuar.
+                break; // sem layout do DE nï¿½o ï¿½ seguro continuar.
             }
             const overrideParser = overrides[i]?.parser;
             const field = parseDE(normalizedHex, localState, i, configDE, safeNetwork);
