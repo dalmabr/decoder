@@ -674,7 +674,7 @@ const DE104_TAG_MAP = {
     '56-84': { name: 'Gateway ID', decoder: 'numeric' },
     '56-85': { name: 'Staged Digital Wallet ID', decoder: 'numeric' },
     '56-86': { name: 'Ramp Provider ID', decoder: 'numeric' },
-    '57-01': { name: 'Business Application Identifier', decoder: 'ebcdic' },
+    '57-01': { name: 'Business Application Identifier', decoder: 'numeric' },
     '57-80': { name: 'Service Processing Type', decoder: 'numeric' },
     '57-81': { name: 'Deferred OCT Date/Time Value', decoder: 'numeric' },
     '57-82': { name: 'Purpose of Payment', decoder: 'numeric' },
