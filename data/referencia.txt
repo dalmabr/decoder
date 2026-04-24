@@ -1,0 +1,118 @@
+        :root {
+            --terra: #C4A484;
+            --verde: #8BA888;
+            --bege: #F5F1EB;
+            --azul: #ebf4f5;
+            --marrom: #3C2E26;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bege);
+            color: var(--marrom);
+        }
+
+        .font-playfair {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .hero-bg {
+            /*background: linear-gradient(135deg, var(--bege) 0%, #E8DDD4 100%);*/
+            background: linear-gradient(135deg, var(--azul) 0%, #b5c6e0 100%);
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(60, 46, 38, 0.1);
+        }
+
+        .pillar-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--terra);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--terra);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--terra);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.6s ease;
+        }
+
+
+        # Salvar o arquivo atualizado
+output_path = '/mnt/kimi/output/praticas-completa.html'
+with open(output_path, 'w', encoding='utf-8') as f:
+    f.write(praticas_combined)
+
+print(f"✅ Arquivo criado: praticas-completa.html")
+print(f"📊 Tamanho: {len(praticas_combined):,} caracteres ({len(praticas_combined)/1024:.1f} KB)")
+print("\n" + "="*70)
+print("RESUMO DA ESTRUTURA:")
+print("="*70)
+print("""
+📄 praticas.html (NOVA VERSÃO)
+├── Header com navegação
+├── Abas de navegação (Tabs)
+│   ├── 🧘 Comunicação Não Violenta (ativa por padrão)
+│   └── 💳 Decodificador ISO 8583
+│
+├── PAINEL CNV (ferramentas existentes mantidas)
+│   ├── Transformador de Frases
+│   ├── Diário de Práticas  
+│   ├── Gerador de Empatia
+│   └── Mapa de Necessidades
+│
+├── PAINEL ISO (NOVO - incluído na mesma página)
+│   ├── Input de mensagem hexadecimal
+│   ├── Botões Decodificar/Limpar
+│   ├── Visualização de Bitmaps
+│   ├── Tabela de Data Elements
+│   └── Legendas e detalhes
+│
+└── Footer
+
+🎯 FUNCIONALIDADE:
+   • Usuário clica na aba para alternar entre CNV e ISO
+   • Ambas as ferramentas estão na MESMA página
+   • Scripts carregados uma única vez (performance)
+   • Design visual consistente entre as seções
+""")

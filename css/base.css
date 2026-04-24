@@ -1,0 +1,63 @@
+﻿/* =========================
+   DESIGN TOKENS
+   =========================*/
+:root {
+    --terra: #C4A484;
+    --verde: #8BA888;
+    --ice: #e4e7e4;
+    --marrom: #3C2E26;
+
+    --font-base: 'Inter', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --font-Sohne: "Sohne", sans-serif;
+    --font-apple: "SF Pro", "Helvetica Neue", sans-serif;
+
+    --space-xxs: 4px;
+    --space-xs: 8px;
+    --space-sm: 16px;
+    --space-md: 24px;
+    --space-lg: 32px;
+
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+
+    --transition: all 0.3s ease;
+}
+
+/* =========================
+   BASE
+   ========================= */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-base);
+    background: linear-gradient(135deg, var(--ice), #e4e7e4);
+    margin: 0;
+    padding: var(--space-lg);
+    color: var(--marrom);
+}
+
+.font-mono {
+    font-family: var(--font-mono);
+}
+
+.font-Sohne {
+    font-family: var(--font-Sohne);
+}
+
+.hidden {
+    display: none;
+}
+
+.label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--marrom);
+    opacity: 0.85;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+

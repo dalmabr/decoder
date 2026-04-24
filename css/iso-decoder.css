@@ -1,0 +1,115 @@
+﻿.iso-section {
+    background: white;
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    max-width: 1100px;
+    margin: var(--space-lg) auto;
+}
+
+.iso-panel .iso-content {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 10px;
+    align-items: end;
+}
+
+.iso-panel .hex-input {
+    font-family: var(--font-apple);
+    background: #f8f9fa;
+    min-height: 140px;
+    width: 100%;
+    /* ðŸ‘‡ espaÃ§amento REAL */
+    margin-top: var(--space-md);
+    margin-bottom: var(--space-md);
+}
+
+/* Estados visuais */
+.iso-panel .hex-input.invalid {
+    border-color: #dc2626;
+    background: #fee2e2;
+}
+
+.iso-panel .hex-input.truncated {
+    border-color: #f59e0b;
+    background: #fffbeb;
+}
+
+.iso-panel .hex-input.valid {
+    border-color: #16a34a;
+    background: #ecfdf5;
+}
+
+/* ==================================================
+   BITMAP
+   ================================================== */
+.iso-panel .bitmap-container {
+    background: #f8f9fa;
+    padding: var(--space-sm);
+    border-radius: var(--radius-md);
+    margin-top: var(--space-sm);
+    display: grid;
+    flex-wrap: wrap;
+}
+
+.iso-panel .primary-bitmap,
+.iso-panel .secondary-bitmap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-items: center;
+}
+
+.iso-panel .bit {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-sm);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.iso-panel .bit.on {
+    background: var(--verde);
+    color: white;
+}
+
+.iso-panel .bit.off {
+    background: #e9ecef;
+    color: #adb5bd;
+}
+
+
+/* ==================================================
+   TABLES (DE)
+   ================================================== */
+.iso-panel .de-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: var(--space-sm);
+    font-size: 12px;
+}
+
+.iso-panel .de-table th {
+    background: #334155;
+    color: #f8fafc;
+    padding: var(--space-xs);
+}
+
+.iso-panel .de-table td {
+    padding: var(--space-xs);
+    border-bottom: 1px solid #e9ecef;
+}
+
+.iso-panel .de-table tr:hover {
+    background: #f8f9fa;
+}
+
+
+
+

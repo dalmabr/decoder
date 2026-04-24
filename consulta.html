@@ -1,0 +1,80 @@
+﻿<!doctype html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="css/base.css"/>
+  <link rel="stylesheet" href="css/components.css"/>
+  <meta charset="utf-8"/>
+  <title>Jazz Local Query</title>
+  <style>
+    table { border-collapse: collapse; margin-top: 1rem; }
+    th, td { border: 1px solid #999; padding: .3rem .6rem; }
+    #filtro { margin-bottom: .5rem; }
+  </style>
+</head>
+<body class="decoders-page" data-page="consulta">
+  <div id="site-header"></div>
+  <div style="max-width:1200px;margin:84px auto 0;padding:0 24px;">
+  <h2>Jazz Work Items (offline)</h2>
+  <input id="filtro" placeholder="Digite e filtre ID, titulo, tipo ou status" size="50">
+  <table>
+    <thead>
+      <tr><th>ID</th><th>Titulo</th><th>Tipo</th><th>Status</th></tr>
+    </thead>
+    <tbody id="corpo"></tbody>
+  </table>
+
+  <script>
+    fetch('data/jazz_data.json')
+      .then(r => r.json())
+      .then(desenha);
+
+    function desenha(dados) {
+      const corpo = document.getElementById('corpo');
+      const filtro = document.getElementById('filtro');
+      function renderiza() {
+        const q = filtro.value.toLowerCase();
+        corpo.innerHTML = '';
+        dados
+          .filter(r => Object.values(r).some(v => String(v).toLowerCase().includes(q)))
+          .forEach(r => {
+            const tr = corpo.insertRow();
+            tr.insertCell().textContent = r.id;
+            tr.insertCell().textContent = r.title;
+            tr.insertCell().textContent = r.type;
+            tr.insertCell().textContent = r.status;
+          });
+      }
+      filtro.oninput = renderiza;
+      renderiza();
+    }
+  </script>
+  </div>
+  <script src="js/ui/header.js?v=20260306z"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

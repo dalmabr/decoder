@@ -1,0 +1,433 @@
+﻿membro;tipo;elemento;descricao;detalhe;
+ATE730;Programa;ATD751;Distribuidor principal por formato de entrada;;
+ATE730;Programa;ATR751;Descompressor de Mensagem;;
+ATE730;Programa;ATR752;Compressor de Mensagem;;
+ATD751;Programa;ATE731;Formato 01: Solicitudes de preautorizaciones y autorizaciones; ;
+ATD751;Programa;ATE732;Formato 03: Solicitud detraspaso entre cuentas; ;
+ATD751;Programa;ATE733;Formato 04: Consulta de datos de titulares; ;  
+ATD751;Programa;ATE734;Formato 06: Comunicacionesde autorización; ;  
+ATD751;Programa;ATE735;Formato 08 e 38: Comunicación deanulación; ;  
+ATD751;Programa;ATE736;Formato 10: Comunicación decapturas MERCHANT; ;  
+ATD751;Programa;ATE737;Formato 11:Comunicación deactualización del archivode titulares; ;  
+ATD751;Programa;ATE738;Formato 28: Responsável por atualizar; ;  
+ATD751;Programa;ATE739;Formato 42: Transferencias; ;  
+ATD751;Programa;ATE740;Formato 22: Responsável por atualizar; ;  
+ATD751;Programa;ATE741;Formato 40: Responsável por atualizar; ;  
+ATD751;Programa;ATE742;Formato 44: Solicitud de Pagos; ;  
+ATD751;Programa;ATE743;Formato 52: Comunicación deEjecución de un Script; ;  
+ATD751;Programa;ATE744;Formato 39 e 80: Consulta posiblesfinanciaciones; ;  
+ATD751;Programa;ATE757;Formato 24: Responsável por atualizar; ;  
+ATD751;Programa;ATE788;Responsável por atualizar; ;  
+ATD751;Programa;ATRYFE;Responsável por atualizar; ;  
+ATE731;Programa;ATRGP01;Responsável por atualizar; ;  
+ATE731;Programa;ATR007;Responsável por atualizar; ;  
+ATE731;Programa;ATR740;Responsável por atualizar; ;  
+ATE731;Programa;ATR770;Responsável por atualizar; ;  
+ATE731;Programa;PRRGP04;Responsável por atualizar; ;  
+ATE731;Tabela;MPDT004;Tabela de Autorizações; Função: Insert
+ATE731;Tabela;MPDT007;Tabela de Contratos ;Select
+ATE731;Tabela;MPDT009;Tipo de Acesso: ;Update
+ATE731;Tabela;MPDT043;Tipo de Acesso: ;Select
+ATE731;Tabela;MPDT044;Tipo de Acesso: ;Select
+ATE731;Tabela;MPDT059;Tipo de Acesso: ;Select
+ATE731;Tabela;MPDT109;Tipo de Acesso: ;Update
+ATE731;Tabela;MPDT160;Tipo de Acesso: ;Select
+ATE731;Tabela;MPDT163;Tipo de Acesso: ;Select
+ATE731;Tabela;MPDT164;Tipo de Acesso: ;Select
+ATE731;Tabela;MPDT169;Tipo de Acesso: ;Select
+ATE731;Tabela;MPDT225;Tipo de Acesso: ;Select
+ATE731;Tabela;MPDT309;Tipo de Acesso: ;Select
+ATE731;Tabela;MPDT761;Tipo de Acesso: ;Select
+ATE731;Tabela;PCSTBA35_HISTRO_HBLCO;Tipo de Acesso: ;Insert
+ATE732;Programa;ATE754;;  
+ATE732;Programa;ATRG005;;  
+ATE732;Programa;ATR740;;  
+ATE732;Programa;ATR770;;  
+ATE732;Tabela;MPDT004;Tabela de Autorizações ;Insert
+ATE732;Tabela;MPDT007;Tipo de Acesso: ;Select
+ATE732;Tabela;MPDT009;Tipo de Acesso: ;Update
+ATE732;Tabela;MPDT025;Tipo de Acesso: ;Select
+ATE732;Tabela;MPDT043;Tipo de Acesso: ;Select
+ATE732;Tabela;MPDT109;Tipo de Acesso: ;Update
+ATE732;Tabela;MPDT147;Tipo de Acesso: ;Select
+ATE732;Tabela;MPDT163;Tipo de Acesso: ;Select
+ATE732;Tabela;MPDT164;Tipo de Acesso: ;Select
+ATE732;Tabela;MPDT310;Tipo de Acesso: ;Select
+ATE733;Programa;ATE766;;  
+ATE733;Programa;ATRGP01;;  
+ATE733;Programa;ATR068;;  
+ATE733;Programa;ATR740;;  
+ATE733;Programa;ATR770;;  
+ATE733;Programa;PCSPO1AA;;  
+ATE733;Programa;PRRGP04;;  
+ATE733;Tabela;MPDT004;Tabela de Autorizações ;Insert
+ATE733;Tabela;MPDT007;Tipo de Acesso: ;Select
+ATE733;Tabela;MPDT009;Tipo de Acesso: ;Update
+ATE733;Tabela;MPDT025;Tipo de Acesso: ;Select
+ATE733;Tabela;MPDT043;Tipo de Acesso: ;Select
+ATE733;Tabela;MPDT060;Tipo de Acesso: ;Select
+ATE733;Tabela;MPDT102;Tipo de Acesso: ;Insert
+ATE733;Tabela;MPDT109;Tipo de Acesso: ;Update
+ATE733;Tabela;MPDT147;Tipo de Acesso: ;Select
+ATE733;Tabela;MPDT163;Tipo de Acesso: ;Select
+ATE733;Tabela;MPDT164;Tipo de Acesso: ;Select
+ATE733;Tabela;MPDT221;Tipo de Acesso: ;Select
+ATE733;Tabela;MPDT310;Tipo de Acesso: ;Select
+ATE733;Tabela;MPDT364;Tipo de Acesso: ;Select
+ATE733;Tabela;PCSTBI04_CI_MPDT009;Tipo de Acesso: ;Select
+ATE734;Programa;ATE755;;  
+ATE734;Programa;ATE790;;  
+ATE734;Programa;ATRGP01;;  
+ATE734;Programa;ATR068;;  
+ATE734;Programa;ATR740;;  
+ATE734;Programa;ATR770;;  
+ATE734;Programa;PRRGP04;;  
+ATE734;Tabela;MPDT004;Tabela de Autorizações ;Insert
+ATE734;Tabela;MPDT007;Tipo de Acesso: ;Select
+ATE734;Tabela;MPDT009;Tipo de Acesso: ;Update
+ATE734;Tabela;MPDT025;Tipo de Acesso: ;Select
+ATE734;Tabela;MPDT043;Tipo de Acesso: ;Select
+ATE734;Tabela;MPDT060;Tipo de Acesso: ;Select
+ATE734;Tabela;MPDT109;Tipo de Acesso: ;Update
+ATE734;Tabela;MPDT147;Tipo de Acesso: ;Select
+ATE734;Tabela;MPDT163;Tipo de Acesso: ;Select
+ATE734;Tabela;MPDT164;Tipo de Acesso: ;Select
+ATE734;Tabela;MPDT169;Tipo de Acesso: ;Select
+ATE734;Tabela;MPDT221;Tipo de Acesso: ;Select
+ATE734;Tabela;MPDT225;Tipo de Acesso: ;Select
+ATE734;Tabela;MPDT310;Tipo de Acesso: ;Select
+ATE734;Tabela;MPDT761;Tipo de Acesso: ;Select
+ATE734;Tabela;PCSTBA35_HISTRO_HBLCO;Tipo de Acesso: ;Insert
+ATE735;Programa;ATE755;;  
+ATE735;Programa;ATE790;;  
+ATE735;Programa;ATR068;;  
+ATE735;Programa;ATR740;;  
+ATE735;Programa;ATR770;;  
+ATE735;Programa;PCSPO1AA;;  
+ATE735;Programa;PRRGP04;;  
+ATE735;Tabela;MPDT003;Tipo de Acesso: ;Select
+ATE735;Tabela;MPDT004;Tabela de Autorizações ;Select
+ATE735;Tabela;MPDT007;Tipo de Acesso: ;Select
+ATE735;Tabela;MPDT009;Tipo de Acesso: ;Select
+ATE735;Tabela;MPDT025;Tipo de Acesso: ;Select
+ATE735;Tabela;MPDT043;Tipo de Acesso: ;Select
+ATE735;Tabela;MPDT147;Tipo de Acesso: ;Select
+ATE735;Tabela;MPDT163;Tipo de Acesso: ;Select
+ATE735;Tabela;MPDT164;Tipo de Acesso: ;Select
+ATE735;Tabela;MPDT169;Tipo de Acesso: ;Select
+ATE735;Tabela;MPDT225;Tipo de Acesso: ;Select
+ATE735;Tabela;MPDT310;Tipo de Acesso: ;Select
+ATE735;Tabela;MPDT761;Tipo de Acesso: ;Select
+ATE736;Programa;ATE772;;  
+ATE736;Programa;ATR740;;  
+ATE736;Tabela;MPDT004;Tabela de Autorizações ;Insert
+ATE736;Tabela;MPDT007;Tipo de Acesso: ;Select
+ATE736;Tabela;MPDT043;Tipo de Acesso: ;Select
+ATE736;Tabela;MPDT310;Tipo de Acesso: ;Select
+ATE737;Programa;ATE756;;  
+ATE737;Programa;ATR770;;  
+ATE737;Tabela;MPDT004;Tabela de Autorizações ;Insert
+ATE737;Tabela;MPDT007;Tipo de Acesso: ;Select
+ATE737;Tabela;MPDT009;Tipo de Acesso: ;Select
+ATE737;Tabela;MPDT025;Tipo de Acesso: ;Select
+ATE737;Tabela;MPDT043;Tipo de Acesso: ;Select
+ATE738;Programa;;;  
+ATE739;Programa;ATE754;;  
+ATE739;Programa;ATE777;;  
+ATE739;Programa;ATE778;;  
+ATE739;Programa;ATE790;;  
+ATE739;Programa;ATRG005;;  
+ATE739;Programa;ATR740;;  
+ATE739;Programa;ATR770;;  
+ATE739;Tabela;MPDT004;Tabela de Autorizações ;Insert
+ATE739;Tabela;MPDT007;Tipo de Acesso: ;Select
+ATE739;Tabela;MPDT009;Tipo de Acesso: ;Select
+ATE739;Tabela;MPDT025;Tipo de Acesso: ;Select
+ATE739;Tabela;MPDT043;Tipo de Acesso: ;Select
+ATE739;Tabela;MPDT147;Tipo de Acesso: ;Select
+ATE739;Tabela;MPDT163;Tipo de Acesso: ;Select
+ATE739;Tabela;MPDT164;Tipo de Acesso: ;Select
+ATE739;Tabela;MPDT310;Tipo de Acesso: ;Select
+ATE740;Programa;ATRG011;;  
+ATE740;Programa;ATR740;;  
+ATE740;Programa;ATR770;;  
+ATE740;Tabela;MPDT004;Tabela de Autorizações ;Insert
+ATE740;Tabela;MPDT007;Tipo de Acesso: ;Select
+ATE740;Tabela;MPDT009;Tipo de Acesso: ;Select
+ATE740;Tabela;MPDT025;Tipo de Acesso: ;Select
+ATE740;Tabela;MPDT043;Tipo de Acesso: ;Select
+ATE740;Tabela;MPDT102;Tipo de Acesso: ;Insert
+ATE741;Programa;ATRG012;;  
+ATE741;Programa;ATR740;;  
+ATE741;Programa;ATR770;;  
+ATE741;Tabela;MPDT004;Tabela de Autorizações ;Insert
+ATE741;Tabela;MPDT007;Tipo de Acesso: ;Select
+ATE741;Tabela;MPDT009;Tipo de Acesso: ;Select
+ATE741;Tabela;MPDT025;Tipo de Acesso: ;Select
+ATE741;Tabela;MPDT043;Tipo de Acesso: ;Select
+ATE741;Tabela;MPDT102;Tipo de Acesso: ;Insert
+ATE742;Programa;ATE779;;  
+ATE742;Programa;ATRG005;;  
+ATE742;Programa;ATR740;;  
+ATE742;Programa;ATR770;;  
+ATE742;Tabela;MPDT004;Tabela de Autorizações ;Insert
+ATE742;Tabela;MPDT007;Tipo de Acesso: ;Select
+ATE742;Tabela;MPDT009;Tipo de Acesso: ;Select
+ATE742;Tabela;MPDT025;Tipo de Acesso: ;Select
+ATE742;Tabela;MPDT043;Tipo de Acesso: ;Select
+ATE742;Tabela;MPDT147;Tipo de Acesso: ;Select
+ATE742;Tabela;MPDT163;Tipo de Acesso: ;Select
+ATE742;Tabela;MPDT164;Tipo de Acesso: ;Select
+ATE742;Tabela;MPDT310;Tipo de Acesso: ;Select
+ATE743;Programa;ATR770;;  
+ATE743;Tabela;MPDT004;Tabela de Autorizações ;Insert
+ATE743;Tabela;MPDT007;Tipo de Acesso: ;Select
+ATE743;Tabela;MPDT009;Tipo de Acesso: ;Select
+ATE743;Tabela;MPDT025;Tipo de Acesso: ;Select
+ATE743;Tabela;MPDT043;Tipo de Acesso: ;Select
+ATE743;Tabela;MPDT274;Tipo de Acesso: ;Select
+ATE743;Tabela;MPDT276;Tipo de Acesso: ;Update
+ATE743;Tabela;MPDT277;Tipo de Acesso: ;Update
+ATE743;Tabela;MPDT291;Tipo de Acesso: ;Update
+ATE744;Programa;ATRGP01;;  
+ATE744;Programa;ATRG005;;  
+ATE744;Programa;ATR007;;  
+ATE744;Programa;ATR740;;  
+ATE744;Tabela;MPDT004;Tabela de Autorizações ;Insert
+ATE744;Tabela;MPDT007;Tipo de Acesso: ;Select
+ATE744;Tabela;MPDT009;Tipo de Acesso: ;Update
+ATE744;Tabela;MPDT043;Tipo de Acesso: ;Select
+ATE744;Tabela;MPDT044;Tipo de Acesso: ;Select
+ATE744;Tabela;MPDT109;Tipo de Acesso: ;Update
+ATE744;Tabela;MPDT160;Tipo de Acesso: ;Select
+ATE744;Tabela;MPDT163;Tipo de Acesso: ;Select
+ATE744;Tabela;MPDT164;Tipo de Acesso: ;Select
+ATE744;Tabela;MPDT169;Tipo de Acesso: ;Select
+ATE757;Programa;ATE753;;  
+ATE757;Programa;ATR007;;  
+ATE757;Programa;ATR740;;  
+ATE757;Programa;ATR770;;  
+ATE757;Tabela;MPDT003;Tipo de Acesso: ;Update
+ATE757;Tabela;MPDT004;Tabela de Autorizações ;Insert
+ATE757;Tabela;MPDT007;Tipo de Acesso: ;Select
+ATE757;Tabela;MPDT009;Tipo de Acesso: ;Select
+ATE757;Tabela;MPDT013;Tipo de Acesso: ;Select
+ATE757;Tabela;MPDT021;Tipo de Acesso: ;Select
+ATE757;Tabela;MPDT025;Tipo de Acesso: ;Select
+ATE757;Tabela;MPDT030;Tipo de Acesso: ;Select
+ATE757;Tabela;MPDT031;Tipo de Acesso: ;Select
+ATE757;Tabela;MPDT043;Tipo de Acesso: ;Select
+ATE757;Tabela;MPDT060;Tipo de Acesso: ;Select
+ATE757;Tabela;MPDT088;Tipo de Acesso: ;Select
+ATE757;Tabela;MPDT107;Tipo de Acesso: ;Update
+ATE757;Tabela;MPDT147;Tipo de Acesso: ;Select
+ATE757;Tabela;MPDT164;Tipo de Acesso: ;Update
+ATE757;Tabela;MPDT300;Tipo de Acesso: ;Select
+ATE757;Tabela;MPDT409;Tipo de Acesso: ;Select
+ATE788;Programa;ATE753;;  
+ATE788;Programa;ATR007;;  
+ATE788;Programa;ATR740;;  
+ATE788;Programa;ATR770;;  
+ATE788;Programa;PCSPRO50;;  
+ATE788;Tabela;MPDT003;Tipo de Acesso: ;Update
+ATE788;Tabela;MPDT004;Tabela de Autorizações ;Insert
+ATE788;Tabela;MPDT007;Tipo de Acesso: ;Select
+ATE788;Tabela;MPDT009;Tipo de Acesso: ;Select
+ATE788;Tabela;MPDT013;Tipo de Acesso: ;Select
+ATE788;Tabela;MPDT021;Tipo de Acesso: ;Select
+ATE788;Tabela;MPDT025;Tipo de Acesso: ;Select
+ATE788;Tabela;MPDT030;Tipo de Acesso: ;Select
+ATE788;Tabela;MPDT031;Tipo de Acesso: ;Select
+ATE788;Tabela;MPDT043;Tipo de Acesso: ;Select
+ATE788;Tabela;MPDT060;Tipo de Acesso: ;Select
+ATE788;Tabela;MPDT088;Tipo de Acesso: ;Select
+ATE788;Tabela;MPDT107;Tipo de Acesso: ;Update
+ATE788;Tabela;MPDT147;Tipo de Acesso: ;Select
+ATE788;Tabela;MPDT164;Tipo de Acesso: ;Update
+ATE788;Tabela;MPDT300;Tipo de Acesso: ;Select
+ATE788;Tabela;MPDT409;Tipo de Acesso: ;Select
+ATRYFE;programa;;;  
+ATE753;Programa;ATR068;;  
+ATE753;Tabela;MPDT198;Tipo de Acesso: ;Update
+ATE754;Programa;ATE755;;  
+ATE754;Programa;ATFRF03;;  
+ATE754;Programa;ATRGP01;;  
+ATE754;Programa;ATRG005;;  
+ATE754;Programa;ATRG013;;  
+ATE754;Programa;ATR007;;  
+ATE754;Programa;ATR200;;  
+ATE754;Tabela;MPDT001;TAbela MPDT001 ;Select
+ATE754;Tabela;MPDT003;Tipo de Acesso: ;Select
+ATE754;Tabela;MPDT007;Tipo de Acesso: ;Select
+ATE754;Tabela;MPDT013;Tipo de Acesso: ;Select
+ATE754;Tabela;MPDT021;Tipo de Acesso: ;Select
+ATE754;Tabela;MPDT030;Tipo de Acesso: ;Select
+ATE754;Tabela;MPDT031;Tipo de Acesso: ;Select
+ATE754;Tabela;MPDT044;Tipo de Acesso: ;Select
+ATE754;Tabela;MPDT055;Tipo de Acesso: ;Select
+ATE754;Tabela;MPDT058;Tipo de Acesso: ;Select
+ATE754;Tabela;MPDT060;Tipo de Acesso: ;Select
+ATE754;Tabela;MPDT063;Tipo de Acesso: ;Select
+ATE754;Tabela;MPDT075;Tipo de Acesso: ;Select
+ATE754;Tabela;MPDT085;Tipo de Acesso: ;Select
+ATE754;Tabela;MPDT088;Tipo de Acesso: ;Select
+ATE754;Tabela;MPDT093;Tipo de Acesso: ;Select
+ATE754;Tabela;MPDT109;Tipo de Acesso: ;Select
+ATE754;Tabela;MPDT111;Tipo de Acesso: ;Select
+ATE754;Tabela;MPDT121;Tipo de Acesso: ;Select
+ATE754;Tabela;MPDT123;Tipo de Acesso: ;Select
+ATE754;Tabela;MPDT126;Tipo de Acesso: ;Select
+ATE754;Tabela;MPDT147;Tipo de Acesso: ;Select
+ATE754;Tabela;MPDT148;Tipo de Acesso: ;Select
+ATE754;Tabela;MPDT163;Tipo de Acesso: ;Select
+ATE754;Tabela;MPDT164;Tipo de Acesso: ;Select
+ATE754;Tabela;MPDT169;Tipo de Acesso: ;Select
+ATE754;Tabela;MPDT171;Tipo de Acesso: ;Select
+ATE754;Tabela;MPDT178;Tipo de Acesso: ;Select
+ATE754;Tabela;MPDT201;Tipo de Acesso: ;Select
+ATE754;Tabela;MPDT202;Tipo de Acesso: ;Select
+ATE754;Tabela;MPDT203;Tipo de Acesso: ;Select
+ATE754;Tabela;MPDT300;Tipo de Acesso: ;Select
+ATE754;Tabela;MPDT310;Tipo de Acesso: ;Select
+ATE754;Tabela;MPDT321;Tipo de Acesso: ;Select
+ATE754;Tabela;MPDT322;Tipo de Acesso: ;Select
+ATE754;Tabela;MPDT323;Tipo de Acesso: ;Select
+ATE754;Tabela;MPDT325;Tipo de Acesso: ;Select
+ATE754;Tabela;MPDT326;Tipo de Acesso: ;Select
+ATE754;Tabela;MPDT364;Tipo de Acesso: ;Update
+ATE754;Tabela;MPDT414;Tipo de Acesso: ;Select
+ATE754;Tabela;MPDT416;Tipo de Acesso: ;Select
+ATE754;Tabela;MPDT420;Tipo de Acesso: ;Select
+ATE754;Tabela;PCSTBA46_LMTE_UNIFICADO_CLNTE;Tipo de Acesso: ;Select
+ATE755;Programa;ATE758;;  
+ATE755;Programa;ATE759;;  
+ATE755;Programa;ATE760;;  
+ATE755;Programa;ATE761;;  
+ATE755;Programa;ATE762;;  
+ATE755;Programa;ATE763;;  
+ATE755;Programa;ATE764;;  
+ATE755;Programa;ATE770;;  
+ATE755;Programa;ATE775;;  
+ATE755;Programa;ATE780;;  
+ATE755;Programa;ATE781;;  
+ATE755;Programa;ATRG013;;  
+ATE755;Programa;ATR777;;  
+ATE755;Tabela;MPDT001;Tipo de Acesso: ;Select
+ATE755;Tabela;MPDT004;Tabela de Autorizações ;Update
+ATE755;Tabela;MPDT009;Tipo de Acesso: ;Update
+ATE755;Tabela;MPDT021;Tipo de Acesso: ;Select
+ATE755;Tabela;MPDT044;Tipo de Acesso: ;Select
+ATE755;Tabela;MPDT055;Tipo de Acesso: ;Select
+ATE755;Tabela;MPDT066;Tipo de Acesso: ;Select
+ATE755;Tabela;MPDT121;Tipo de Acesso: ;Select
+ATE755;Tabela;MPDT123;Tipo de Acesso: ;Select
+ATE755;Tabela;MPDT126;Tipo de Acesso: ;Select
+ATE755;Tabela;MPDT147;Tipo de Acesso: ;Select
+ATE755;Tabela;MPDT321;Tipo de Acesso: ;Select
+ATE755;Tabela;MPDT322;Tipo de Acesso: ;Select
+ATE755;Tabela;MPDT323;Tipo de Acesso: ;Select
+ATE755;Tabela;MPDT325;Tipo de Acesso: ;Select
+ATE756;Programa;ATE765;;  
+ATE756;Programa;ATR401;;  
+ATE756;Programa;ATR411;;  
+ATE756;Tabela;MPDT118;Tipo de Acesso: ;Select
+ATE766;Programa;ATE755;;  
+ATE766;Programa;ATRG013;;  
+ATE766;Programa;ATR779;;  
+ATE766;Tabela;MPDT004;Tabela de Autorizações ;Select
+ATE766;Tabela;MPDT012;Tipo de Acesso: ;Select
+ATE766;Tabela;MPDT014;Tipo de Acesso: ;Select
+ATE766;Tabela;MPDT021;Tipo de Acesso: ;Select
+ATE766;Tabela;MPDT025;Tipo de Acesso: ;Select
+ATE766;Tabela;MPDT044;Tipo de Acesso: ;Select
+ATE766;Tabela;MPDT052;Tipo de Acesso: ;Select
+ATE766;Tabela;MPDT059;Tipo de Acesso: ;Select
+ATE766;Tabela;MPDT060;Tipo de Acesso: ;Select
+ATE766;Tabela;MPDT063;Tipo de Acesso: ;Select
+ATE766;Tabela;MPDT105;Tipo de Acesso: ;Select
+ATE766;Tabela;MPDT109;Tipo de Acesso: ;Select
+ATE766;Tabela;MPDT163;Tipo de Acesso: ;Select
+ATE766;Tabela;MPDT164;Tipo de Acesso: ;Select
+ATE766;Tabela;MPDT310;Tipo de Acesso: ;Select
+ATE772;Programa;ATR777;;  
+ATE772;Tabela;MPDT001;Tipo de Acesso: ;Select
+ATE772;Tabela;MPDT055;Tipo de Acesso: ;Select
+ATE772;Tabela;MPDT147;Tipo de Acesso: ;Select
+ATE777;Programa;ATRG013;;  
+ATE777;Programa;ATR500;;  
+ATE777;Programa;ATR775;;  
+ATE777;Tabela;MPDT007;Tipo de Acesso: ;Select
+ATE777;Tabela;MPDT009;Tipo de Acesso: ;Select
+ATE777;Tabela;MPDT044;Tipo de Acesso: ;Select
+ATE777;Tabela;MPDT047;Tipo de Acesso: ;Insert
+ATE777;Tabela;MPDT063;Tipo de Acesso: ;Select
+ATE777;Tabela;MPDT069;Tipo de Acesso: ;Select
+ATE777;Tabela;MPDT105;Tipo de Acesso: ;Select
+ATE777;Tabela;MPDT121;Tipo de Acesso: ;Update
+ATE777;Tabela;MPDT123;Tipo de Acesso: ;Update
+ATE777;Tabela;MPDT126;Tipo de Acesso: ;Update
+ATE777;Tabela;MPDT147;Tipo de Acesso: ;Select
+ATE777;Tabela;MPDT163;Tipo de Acesso: ;Update
+ATE777;Tabela;MPDT164;Tipo de Acesso: ;Update
+ATE777;Tabela;MPDT321;Tipo de Acesso: ;Select
+ATE777;Tabela;MPDT322;Tipo de Acesso: ;Select
+ATE777;Tabela;MPDT325;Tipo de Acesso: ;Select
+ATE777;Tabela;MPDT326;Tipo de Acesso: ;Update
+ATE777;Tabela;SALAUTCREMES;Tipo de Acesso: ;Update
+ATE778;Programa;ATE754;;  
+ATE778;Programa;ATRG013;;  
+ATE778;Tabela;MPDT044;Tipo de Acesso: ;Select
+ATE778;Tabela;MPDT105;Tipo de Acesso: ;Select
+ATE779;Programa;ATR500;;  
+ATE779;Programa;ATR775;;  
+ATE779;Tabela;MPDT007;Tipo de Acesso: ;Select
+ATE779;Tabela;MPDT009;Tipo de Acesso: ;Select
+ATE779;Tabela;MPDT044;Tipo de Acesso: ;Select
+ATE779;Tabela;MPDT047;Tipo de Acesso: ;Insert
+ATE779;Tabela;MPDT063;Tipo de Acesso: ;Select
+ATE779;Tabela;MPDT069;Tipo de Acesso: ;Select
+ATE779;Tabela;MPDT105;Tipo de Acesso: ;Select
+ATE779;Tabela;MPDT121;Tipo de Acesso: ;Update
+ATE779;Tabela;MPDT123;Tipo de Acesso: ;Update
+ATE779;Tabela;MPDT126;Tipo de Acesso: ;Update
+ATE779;Tabela;MPDT147;Tipo de Acesso: ;Select
+ATE779;Tabela;MPDT163;Tipo de Acesso: ;Update
+ATE779;Tabela;MPDT164;Tipo de Acesso: ;Update
+ATE779;Tabela;MPDT321;Tipo de Acesso: ;Select
+ATE779;Tabela;MPDT322;Tipo de Acesso: ;Select
+ATE779;Tabela;MPDT325;Tipo de Acesso: ;Select
+ATE779;Tabela;MPDT326;Tipo de Acesso: ;Update
+ATE779;Tabela;SALAUTCREMES;Tipo de Acesso: ;Update
+ATE790;Programa;ATE755;;  
+ATE790;Tabela;MPDT009;Tipo de Acesso: ;Update
+ATE790;Tabela;MPDT021;Tipo de Acesso: ;Select
+ATE790;Tabela;MPDT052;Tipo de Acesso: ;Select
+ATE790;Tabela;MPDT059;Tipo de Acesso: ;Select
+ATE790;Tabela;MPDT060;Tipo de Acesso: ;Select
+ATE790;Tabela;MPDT063;Tipo de Acesso: ;Select
+ATE790;Tabela;MPDT108;Tipo de Acesso: ;Update
+ATE790;Tabela;MPDT109;Tipo de Acesso: ;Update
+ATRG005;Programa;;;  
+ATRG005;Tabela;MPDT305;Tipo de Acesso: ;Select
+ATRG005;Tabela;MPDT310;Tipo de Acesso: ;Select
+ATRG011;Programa;;;  
+ATRG011;Tabela;MPDT305;Tipo de Acesso: ;Select
+ATRG012;Programa;;;  
+ATRG012;Tabela;MPDT305;Tipo de Acesso: ;Select
+ATR007;Tabela;MPDT021;Tipo de Acesso: ;Select
+ATR007;Tabela;MPDT107;Tipo de Acesso: ;Select
+ATR068;Tabela;MPDT068;Tipo de Acesso: ;Insert
+ATR068;Tabela;MPDT221;Tipo de Acesso: ;Select
+ATR068;Tabela;MPDT342;Tipo de Acesso: ;Insert
+ATR068;Tabela;MPDT606;Tipo de Acesso: ;Select
+ATR068;Tabela;MPDT947;Tipo de Acesso: ;Select
+ATR740;Tabela;MPDT065;Tipo de Acesso: ;Select
+ATR770;Programa;;;  
+PCSPO1AA;Tabela;MPDT009;Tipo de Acesso: ;Select
+PCSPO1AA;Tabela;MPDT300;Tipo de Acesso: ;Select
+PCSPO1AA;Tabela;MPDT401;Tipo de Acesso: ;Select
+PCSPO1AA;Tabela;MPDT406;Tipo de Acesso: ;Select
+PCSPRO50;Programa;;;  
+PRRGP04;Programa;ATRGP01;;  
+PRRGP04;Tabela;MPDT021;Tipo de Acesso: ;Select
+PRRGP04;Tabela;MPDT104;Tipo de Acesso: ;Select

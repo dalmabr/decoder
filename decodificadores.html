@@ -1,0 +1,149 @@
+﻿
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAT-SIA | Plataforma Técnica de Meios de Pagamento</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/iso-decoder.css">
+</head>
+<body class="decoders-page" data-page="decodificadores">
+    <div id="site-header"></div>
+
+    <!-- Header -->
+    <section class="praticas-hero pt-20 pb-8 bg-gradient-to-br from-bege to-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <h1 id="decoder-title" class="font-Sohne text-3xl md:text-4xl font-bold text-marrom mb-4 fade-in">
+                Decodificadores de Mensagem
+            </h1>
+            <p id="decoder-desc" class="text-base md:text-lg text-marrom/80 fade-in">
+                Use os módulos ISO 8583 e Antifraude para análise operacional e investigação técnica.
+            </p>
+        </div>
+    </section>
+
+    <!-- ISO Decoder Panel -->
+    <section class="iso-panel" data-tool-panel="iso">
+        <div class="iso-content">
+            <textarea class="hex-input textarea"
+                placeholder="Cole a mensagem completa em hexadecimal (ex.: 004230323030F238...)"></textarea>
+            <button class="btn clear-btn">Limpar</button>
+            <button class="btn decode-btn">Decodificar</button>
+        </div>
+        
+        <!-- tudo que o core ja preenche -->
+        <div class="results hidden">
+            <!-- MTI -->
+            <div class="mti">
+                <span class="label">Mensagem:</span>
+                <span class="value"></span>
+                <span class="label" style="margin-left:15px;">Bandeira:</span>
+                <span class="network-value highlight"></span>
+                <span class="label" style="margin-left:15px;">Bitmap:</span>
+                <span class="bitmap-mode-value highlight"></span>
+            </div>
+
+            <!-- Bitmaps -->
+            <div class="grid md:grid-cols-2 gap-4 mb-6">
+                <div class="bitmap-container">
+                    <div class="primary-bitmap">
+                        <span class="w-2 h-2 rounded-full bg-verde"></span>
+                        Bitmap Primario (64 bits)
+                    </div>
+                </div>
+                <div class="bitmap-container">
+                    <div class="secondary-bitmap">
+                        <span class="w-2 h-2 rounded-full bg-terra"></span>
+                        Bitmap Secundario (64 bits)
+                    </div>
+                </div>
+            </div>
+
+            <!-- Data Elements -->
+            <div class="mt-6">
+                <div class="overflow-x-auto">
+                    <table class="de-table tbody">
+                        <colgroup>
+                            <col class="col-field-c">
+                            <col class="col-attr-c">
+                            <col class="col-value-c">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th class="col-field-h">Campo</th>
+                                <th class="col-attr-h">Atributo</th>
+                                <th class="col-value-h">Conteudo</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Detail Containers -->
+            <div class="detail-containers mt-6"></div>
+        </div>
+
+    </section>
+    <section class="iso-panel hidden" data-tool-panel="antifraude">
+        <div class="iso-content antifraud-content">
+            <textarea id="hexInput" class="hex-input textarea"
+                placeholder="Cole aqui a mensagem completa em texto..."></textarea>
+            <button class="btn clear-btn" data-af-clear>Limpar</button>
+            <button class="btn decode-btn" data-af-decode>Decodificar</button>
+        </div>
+        <div id="result" class="antifraud-result"></div>
+    </section>
+    <button type="button" class="back-to-top" data-back-to-top aria-label="Voltar ao topo">
+        <svg fill="none" class="w-6 h-6" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+        </svg>
+    </button>
+    <script src="js/ui/header.js?v=20260306z"></script>
+    <script src="js/core/antifraud-decoder-core.js"></script>
+    <!-- Scripts das ferramentas -->
+    <script type="module" src="js/core/iso-decoder.js"></script>
+    <script type="module" src="js/ui/render.js"></script>
+    <script type="module" src="js/pages/decodificadores.js"></script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
