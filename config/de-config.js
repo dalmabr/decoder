@@ -1,7 +1,7 @@
 export const deConfig = {
     0: { name: 'MTI', type: 'Fixo', length:4, unit: 'digits', format: 'n' },
     1: { name: 'Bitmap', type: 'Fixo', length:16, unit: 'digits', format: 'ans' },
-    2: { name: 'PANXXX', type: 'LLVAR', length:'bcd', unit: 'digits', format: 'n' },
+    2: { name: 'PANXS', type: 'LLVAR', length:'bcd', unit: 'digits', format: 'n' },
     3: { name: 'Processing Code', type: 'Fixo', length:6, unit: 'digits', format: 'n' },
     4: { name: 'Amount', type: 'Fixo', length:12, unit: 'digits', format: 'n' },
     5: { name: 'Amount, Settlement', type: 'Fixo', length:12, unit: 'digits', format: 'n' },
