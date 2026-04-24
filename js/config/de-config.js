@@ -12,7 +12,7 @@ export const deConfig = {
     11: { name: 'STAN', type: 'Fixo', length:6, unit: 'digits', format: 'n' },
     12: { name: 'Local Time', type: 'Fixo', length:6, unit: 'digits', format: 'n' },
     13: { name: 'Local Date', type: 'Fixo', length:4, unit: 'digits', format: 'n' },
-    14: { name: 'Date, Expiration', type: 'Fixo', length:4, unit: 'digits', format: 'n' },
+    14: { name: 'Date Expiration', type: 'Fixo', length:4, unit: 'digits', format: 'n' },
     15: { name: 'Date, Settlement', type: 'Fixo', length:4, unit: 'digits', format: 'n' },
     16: { name: 'Date, Conversion', type: 'Fixo', length:4, unit: 'digits', format: 'n' },
     18: { name: 'Merchant Type', type: 'Fixo', length:4, unit: 'digits', format: 'n' },

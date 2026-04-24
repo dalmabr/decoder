@@ -668,7 +668,7 @@ const DE104_TAG_MAP = {
     '56-02': { name: 'Sub-Merchant ID', decoder: 'numeric' },
     '56-03': { name: 'Independent Sales Organization ID', decoder: 'numeric' },
     '56-04': { name: 'Foreign Retailer Indicator', decoder: 'numeric' },
-    '56-81': { name: 'Acceptor Legal Business Name', decoder: 'numeric' },
+    '56-81': { name: 'Acceptor Legal Business Name', decoder: 'ebcdic' },
     '56-82': { name: 'Payment Facilitator Name', decoder: 'numeric' },
     '56-83': { name: 'Marketplace ID', decoder: 'numeric' },
     '56-84': { name: 'Gateway ID', decoder: 'numeric' },

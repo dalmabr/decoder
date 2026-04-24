@@ -1,5 +1,5 @@
 ﻿import { deConfig } from "../config/de-config.js";
-import { NETWORK_OVERRIDES } from "../config/network.js";
+import { NETWORK_OVERRIDES } from '../config/network.js';
 
 export function buildFieldConfig(network) {
     const BASE_DE_CONFIG = deConfig;
