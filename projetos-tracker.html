@@ -1,275 +1,146 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SAT-SIA | Tracker de Projetos</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/components.css">
-  <style>
-    /* base.css define padding no body — zeramos aqui */
-    body{padding:0!important}
-    /* ── Tracker ── */
-    .pt-section{background:white;border-radius:var(--radius-lg);padding:var(--space-lg);max-width:1100px;margin:var(--space-lg) auto}
-    .pt-section-title{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--marrom);opacity:.6;margin:0 0 var(--space-md)}
-    .pt-dropzone{border:2px dashed #c9cdd3;border-radius:var(--radius-md);padding:var(--space-lg) var(--space-md);text-align:center;cursor:pointer;transition:var(--transition);background:#fafafa}
-    .pt-dropzone:hover,.pt-dropzone.pt-drag-over{border-color:var(--verde);background:#f0f4f0}
-    .pt-dropzone-icon{font-size:32px;margin-bottom:var(--space-xs)}
-    .pt-dropzone p{margin:0;color:var(--marrom);opacity:.7;font-size:14px}
-    .pt-dropzone small{font-size:12px;color:#9a9ea4}
-    .pt-filename{margin-top:var(--space-xs);font-size:13px;color:var(--verde);font-weight:600;min-height:20px;font-family:var(--font-mono)}
-    #pt-results{margin-top:var(--space-md)}
-    .pt-toolbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-sm);flex-wrap:wrap;gap:var(--space-xs)}
-    .pt-tabs{display:flex;gap:var(--space-xs);flex-wrap:wrap}
-    .pt-tab-btn{padding:6px 14px;border:1.5px solid #dde0e4;border-radius:50px;background:white;font-size:13px;font-weight:600;color:var(--marrom);cursor:pointer;transition:var(--transition);display:flex;align-items:center;gap:6px}
-    .pt-tab-btn:hover{border-color:var(--verde);color:var(--verde)}
-    .pt-tab-btn.active{background:var(--marrom);border-color:var(--marrom);color:white}
-    .pt-count{background:rgba(255,255,255,.25);color:inherit;border-radius:50px;padding:1px 7px;font-size:11px;font-weight:700}
-    .pt-tab-btn:not(.active) .pt-count{background:#e4e7e4;color:var(--marrom)}
-    .pt-tab-panel{display:none}
-    .pt-tab-panel.active{display:block}
-    .pt-btn-novo{padding:6px 14px;border-radius:50px;border:1.5px solid #dde0e4;background:white;font-size:13px;font-weight:600;color:#6b7280;cursor:pointer;transition:var(--transition)}
-    .pt-btn-novo:hover{border-color:#e06060;color:#e06060}
-    .pt-table-wrap{overflow-x:auto;margin-top:var(--space-sm)}
-    .pt-table{width:100%;border-collapse:separate;border-spacing:0;font-size:12.5px}
-    .pt-table th{background:var(--marrom);color:white;padding:9px var(--space-xs);font-weight:700;font-size:11px;letter-spacing:.05em;text-transform:uppercase;text-align:left;white-space:nowrap}
-    .pt-table th:first-child{border-radius:var(--radius-sm) 0 0 0}
-    .pt-table th:last-child{border-radius:0 var(--radius-sm) 0 0}
-    .pt-table td{padding:8px var(--space-xs);border-bottom:1px solid #f0f0f0;vertical-align:middle}
-    .pt-table tfoot td{font-weight:700;border-top:2px solid #e0e0e0;border-bottom:none;font-size:13px}
-    .pt-table tbody tr:hover td{background:#f8f9fa}
-    .pt-row-even td{background:#f9fafb}
-    .pt-row-odd td{background:white}
-    .pt-id{font-family:var(--font-mono);font-size:12px;color:#4b5563;white-space:nowrap}
-    .pt-date{font-family:var(--font-mono);font-size:11.5px;white-space:nowrap;color:#6b7280}
-    .pt-resumo{max-width:280px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--marrom)}
-    .pt-center{text-align:center}
-    .pt-bold{font-weight:700}
-    .pt-bar-wrap{background:#e9ecef;border-radius:50px;height:6px;width:100px;display:inline-block;vertical-align:middle;margin-right:6px}
-    .pt-bar{background:var(--verde);height:100%;border-radius:50px;transition:width .5s ease}
-    .pt-pct{font-size:11px;font-weight:600;color:#6b7280;vertical-align:middle}
-    .pt-badge{display:inline-block;padding:3px 10px;border-radius:50px;font-size:11px;font-weight:700;letter-spacing:.03em;white-space:nowrap}
-    .badge-andamento{background:#dbeafe;color:#1d4ed8}
-    .badge-pendente{background:#fef9c3;color:#92400e}
-    .badge-concluido{background:#dcfce7;color:#166534}
-    .badge-cancelado{background:#fee2e2;color:#991b1b}
-    .badge-default{background:#f3f4f6;color:#374151}
-    .pt-alert td{background:#fff7ed!important}
-    .pt-alert:hover td{background:#ffedd5!important}
-    .pt-empty{text-align:center;color:#9ca3af;font-size:13px;padding:var(--space-lg) 0}
-    .pt-hint{font-size:12px;color:#9ca3af;margin:var(--space-xs) 0}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAT-SIA | Plataforma Técnica de Meios de Pagamento</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/iso-decoder.css">
+    <link rel="stylesheet" href="css/projetos-tracker.css">
 </head>
-<body data-page="projetos">
+<body>
+<body class="decoders-page" data-page="decodificadores">
+    <div id="site-header"></div>
 
-  <!-- Header idêntico ao index.html -->
-  <div id="site-header"></div>
 
-  <!-- MAIN — pt-24 compensa o nav fixed do header.js -->
-  <main class="pt-24">
-    <section class="pt-section">
-      <p class="pt-section-title">Tracker de Projetos</p>
+    <!-- Conteúdo principal -->
+    <main id="app" style="padding-top: 80px;">
+        <section class="pt-section">
+            
+          
+            <h1 class="pt-view-title block px-4 py-2.5 text-sm text-marrom hover:text-terra hover:bg-[#FDFBF7] transition-colors">Status dos Itens de Backlog</h1>
 
-      <div class="pt-dropzone" id="pt-dropzone" role="button" tabindex="0">
-        <div class="pt-dropzone-icon">📂</div>
-        <p>Arraste o arquivo CSV aqui ou <strong>clique para selecionar</strong></p>
-        <small>Formato: ID · Tipo · Status · Dt Início · Prazo Final · Dt Modificação · Resumo</small>
-        <input type="file" id="pt-file-input" accept=".csv" class="hidden">
-      </div>
-      <div class="pt-filename" id="pt-filename"></div>
+            <!-- Filtros: apenas busca + status -->
+            <div class="pt-filters">
+                <input type="text" class="pt-search" id="pt-search" placeholder="Pesquisar em todas as colunas...">
+                <select class="pt-filter-status" id="pt-filter-status">
+                    <option value="">Todas as Situações</option>
+                    <option value="andamento">Em andamento</option>
+                    <option value="atendimento">Em atendimento</option>
+                    <option value="concluida">Concluída</option>
+                    <option value="cancelada">Cancelada</option>
+                    <option value="pendente">Pendente</option>
+                </select>
+                <button class="pt-btn-novo">✕ Novo arquivo</button>
+            </div>
 
-      <div id="pt-empty-state" style="text-align:center;padding:40px 0;color:#9ca3af;font-size:13px">
-        Nenhum arquivo carregado.
-      </div>
+            <!-- Tabela -->
+            <div class="pt-table-wrap">
+                <table class="pt-table" id="pt-table">
+                    <thead>
+                        <tr>
+                            <th style="width:8%">ID ▲</th>
+                            <th style="width:16%">TIPO</th>
+                            <th style="width:12%">STATUS</th>
+                            <th style="width:12%">DT. INÍCIO</th>
+                            <th style="width:12%">PRAZO FINAL</th>
+                            <th style="width:14%">DT. MODIFICAÇÃO</th>
+                            <th style="width:26%">RESUMO</th>
+                        </tr>
+                    </thead>
+                    <tbody id="pt-tbody">
+                        <!-- Dados de exemplo -->
+                        <tr>
+                            <td class="pt-id">1524185</td>
+                            <td>Demanda de Manutenção de Sistemas</td>
+                            <td><span class="pt-status">CANCELADA</span></td>
+                            <td class="pt-date">—</td>
+                            <td class="pt-date">—</td>
+                            <td class="pt-date">25/02/2019 16:44</td>
+                            <td class="pt-resumo">[AUTORIZAÇÃO] SIPCS/SIA - Criação de Filtro de Busca por PIN e P...</td>
+                        </tr>
+                        <tr>
+                            <td class="pt-id">1529465</td>
+                            <td>Demanda de Manutenção de Sistemas</td>
+                            <td><span class="pt-status">CANCELADA</span></td>
+                            <td class="pt-date">—</td>
+                            <td class="pt-date">—</td>
+                            <td class="pt-date">25/02/2019 16:44</td>
+                            <td class="pt-resumo">BR201605395 - [AUTORIZAÇÃO] SIPCS/SIA - Implantação no SIA pa...</td>
+                        </tr>
+                        <tr>
+                            <td class="pt-id">1542516</td>
+                            <td>Serviço Técnico Especializado</td>
+                            <td><span class="pt-status">CONCLUÍDO</span></td>
+                            <td class="pt-date">—</td>
+                            <td class="pt-date">—</td>
+                            <td class="pt-date">24/05/2017 15:31</td>
+                            <td class="pt-resumo">[Desenvolvimento Assistido] [Autorização] SIPCS - SIA - ENVIO ONL...</td>
+                        </tr>
+                        <tr>
+                            <td class="pt-id">1656212</td>
+                            <td>Tarefa</td>
+                            <td><span class="pt-status">CONCLUÍDA</span></td>
+                            <td class="pt-date">03/11/2016 14:00</td>
+                            <td class="pt-date">20/11/2016 18:00</td>
+                            <td class="pt-date">23/11/2016 12:26</td>
+                            <td class="pt-resumo">[Autorizador] Analista de negócio (8hrs)</td>
+                        </tr>
+                        <tr>
+                            <td class="pt-id">1656220</td>
+                            <td>Tarefa</td>
+                            <td><span class="pt-status">CONCLUÍDA</span></td>
+                            <td class="pt-date">03/11/2016 10:00</td>
+                            <td class="pt-date">20/11/2016 18:00</td>
+                            <td class="pt-date">23/11/2016 12:26</td>
+                            <td class="pt-resumo">[Autorizador] Analista de negócio (4hrs)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
-      <div id="pt-results" class="hidden">
-        <div class="pt-toolbar">
-          <div class="pt-tabs">
-            <button class="pt-tab-btn active" data-tab="pt-tab-gerencial">📊 Gerencial</button>
-            <button class="pt-tab-btn"        data-tab="pt-tab-andamento">🔵 Em Andamento</button>
-            <button class="pt-tab-btn"        data-tab="pt-tab-pendente" >🟡 Pendente</button>
-            <button class="pt-tab-btn"        data-tab="pt-tab-controle" >⏱ Controle de Tempo</button>
-          </div>
-          <button class="pt-btn-novo" id="pt-btn-novo">✕ Novo arquivo</button>
-        </div>
+            <!-- Paginação -->
+            <div class="pt-pagination">
+                <span id="pt-info">Mostrando 1–5 de 4366</span>
+                <div class="pt-pag-buttons">
+                    <button class="pt-pag-btn" disabled>Anterior</button>
+                    <button class="pt-pag-btn">Próximo</button>
+                </div>
+            </div>
 
-        <div class="pt-tab-panel active" id="pt-tab-gerencial">
-          <div class="pt-table-wrap" id="pt-gerencial-body"></div>
-        </div>
-        <div class="pt-tab-panel" id="pt-tab-andamento">
-          <div class="pt-table-wrap" id="pt-em-andamento-body"></div>
-        </div>
-        <div class="pt-tab-panel" id="pt-tab-pendente">
-          <div class="pt-table-wrap" id="pt-pendente-body"></div>
-        </div>
-        <div class="pt-tab-panel" id="pt-tab-controle">
-          <p class="pt-hint">
-            Linhas em
-            <span style="background:#fff7ed;padding:1px 6px;border-radius:4px;color:#92400e;font-weight:600">laranja</span>
-            = "Em Andamento" há mais de 72h.
-          </p>
-          <div class="pt-table-wrap" id="pt-controle-body"></div>
-        </div>
-      </div>
-    </section>
-  </main>
+        </section>
+    </main>
 
-  <script src="js/ui/header.js"></script>
-  <script>
-  // Marca "Projetos" como ativo no header após ele ser carregado
-  document.addEventListener('DOMContentLoaded', () => {
-    const projetosLink = document.querySelector('#site-header [data-nav-link="Projetos"]');
-    if (projetosLink) projetosLink.classList.add('bg-slate-100');
-  });
-  </script>
-  <script>
-  const ProjetosTracker = (() => {
-    let allRows = [], headers = [];
+    <script>
+        // Busca simples em todas as colunas
+        document.getElementById('pt-search').addEventListener('input', function(e) {
+            const term = e.target.value.toLowerCase();
+            const rows = document.querySelectorAll('#pt-tbody tr');
+            rows.forEach(row => {
+                const text = row.textContent.toLowerCase();
+                row.style.display = text.includes(term) ? '' : 'none';
+            });
+        });
 
-    function parseCsvLine(line) {
-      const fields = []; let field = '', inQuotes = false;
-      for (let i = 0; i < line.length; i++) {
-        const ch = line[i], code = line.charCodeAt(i);
-        if (!((code>=32&&code<=126)||(code>=128&&code<=255))) continue;
-        if (code===255||code===254||code===9) continue;
-        if (ch==='"') { inQuotes=!inQuotes; }
-        else if (ch===','&&!inQuotes) { fields.push(field.trim()); field=''; }
-        else { field+=ch; }
-      }
-      fields.push(field.trim());
-      return fields;
-    }
-
-    function parseDate(str) {
-      if (!str||str.length<10) return str||'';
-      const s=str.trim(); let d;
-      if (/^\d{4}-\d{2}-\d{2}/.test(s)) {
-        d=new Date(s.replace(' ','T'));
-      } else if (/^\d{2}\/\d{2}\/\d{4}/.test(s)) {
-        const [dd,mm,yyyy]=s.split('/');
-        d=new Date(`${yyyy}-${mm}-${dd}T${s.length>10?s.slice(11,16):'00:00'}`);
-      } else return str;
-      if (isNaN(d)) return str;
-      return d.toLocaleString('pt-BR',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'});
-    }
-
-    function processCsv(text) {
-      const lines=text.replace(/\r\n/g,'\n').replace(/\r/g,'\n').split('\n').filter(l=>l.trim());
-      headers=parseCsvLine(lines[0]); allRows=[];
-      for (let i=1;i<lines.length;i++) {
-        const cols=parseCsvLine(lines[i]);
-        if (cols.every(c=>!c)) continue;
-        const row=cols.map((v,idx)=>(idx>=3&&idx<=5)?parseDate(v):v);
-        while(row.length<7) row.push('');
-        allRows.push(row.slice(0,7));
-      }
-    }
-
-    const groupByStatus=()=>{const g={};for(const r of allRows){const s=r[2]||'(sem status)';g[s]=(g[s]||0)+1;}return g;};
-    const filterByStatus=s=>allRows.filter(r=>r[2]===s);
-
-    function calcTempoEmStatus() {
-      const ctrl={},hoje=new Date();
-      const pl=s=>{if(!s)return null;const m=s.match(/(\d{2})\/(\d{2})\/(\d{4})[,\s]+(\d{2}:\d{2})/);if(m)return new Date(`${m[3]}-${m[2]}-${m[1]}T${m[4]}`);const d=new Date(s);return isNaN(d)?null:d;};
-      for(const row of allRows){
-        const id=row[0];if(!id)continue;
-        const status=row[2],dataMod=pl(row[5])||hoje,dataInicio=pl(row[3])||dataMod;
-        if(!ctrl[id])ctrl[id]={id,status,dataInicio,horasTotal:0};
-        const ref=ctrl[id];
-        if(status==='Em Andamento') ref.horasTotal=Math.round(((hoje-dataInicio)/36e5)*100)/100;
-        else if(status==='Pendente') ref.horasTotal=Math.round(((dataMod-dataInicio)/36e5)*100)/100;
-        ref.status=status;
-      }
-      return Object.values(ctrl).sort((a,b)=>b.horasTotal-a.horasTotal);
-    }
-
-    const COLS=['ID','Tipo','Status','Dt. Início','Prazo Final','Dt. Modificação','Resumo'];
-    const SB={'Em Andamento':'badge-andamento','Pendente':'badge-pendente','Concluído':'badge-concluido','Cancelado':'badge-cancelado'};
-    const badge=s=>`<span class="pt-badge ${SB[s]||'badge-default'}">${s}</span>`;
-
-    function renderTable(rows,id){
-      const el=document.getElementById(id);if(!el)return;
-      if(!rows.length){el.innerHTML='<p class="pt-empty">Nenhum registro.</p>';return;}
-      const th=`<tr>${COLS.map(c=>`<th>${c}</th>`).join('')}</tr>`;
-      const tb=rows.map(r=>`<tr><td class="pt-id">${r[0]}</td><td>${r[1]}</td><td>${badge(r[2])}</td><td class="pt-date">${r[3]}</td><td class="pt-date">${r[4]}</td><td class="pt-date">${r[5]}</td><td class="pt-resumo" title="${(r[6]||'').replace(/"/g,'&quot;')}">${r[6]||''}</td></tr>`).join('');
-      el.innerHTML=`<table class="pt-table"><thead>${th}</thead><tbody>${tb}</tbody></table>`;
-    }
-
-    function renderGerencial(groups,id){
-      const el=document.getElementById(id);if(!el)return;
-      const total=Object.values(groups).reduce((a,b)=>a+b,0);
-      const rows=Object.entries(groups).sort((a,b)=>b[1]-a[1]).map(([s,qt],i)=>{
-        const pct=total?Math.round((qt/total)*100):0;
-        return `<tr class="${i%2===0?'pt-row-even':'pt-row-odd'}"><td>${badge(s)}</td><td class="pt-center pt-bold">${qt}</td><td class="pt-center"><div class="pt-bar-wrap"><div class="pt-bar" style="width:${pct}%"></div></div><span class="pt-pct">${pct}%</span></td></tr>`;
-      }).join('');
-      el.innerHTML=`<table class="pt-table"><thead><tr><th>Status</th><th class="pt-center">Qtde</th><th class="pt-center">%</th></tr></thead><tbody>${rows}</tbody><tfoot><tr><td><strong>Total</strong></td><td class="pt-center pt-bold">${total}</td><td></td></tr></tfoot></table>`;
-    }
-
-    function renderControle(ctrl,id){
-      const el=document.getElementById(id);if(!el)return;
-      if(!ctrl.length){el.innerHTML='<p class="pt-empty">Sem dados.</p>';return;}
-      const rows=ctrl.map(c=>`<tr class="${c.horasTotal>72&&c.status==='Em Andamento'?' pt-alert':''}"><td class="pt-id">${c.id}</td><td>${badge(c.status)}</td><td class="pt-center">${c.horasTotal}h</td><td class="pt-center">${(c.horasTotal/24).toFixed(1)}d</td></tr>`).join('');
-      el.innerHTML=`<table class="pt-table"><thead><tr><th>ID</th><th>Status</th><th class="pt-center">Horas</th><th class="pt-center">Dias</th></tr></thead><tbody>${rows}</tbody></table>`;
-    }
-
-    function switchTab(t){
-      document.querySelectorAll('.pt-tab-btn').forEach(b=>b.classList.remove('active'));
-      document.querySelectorAll('.pt-tab-panel').forEach(p=>p.classList.remove('active'));
-      document.querySelector(`[data-tab="${t}"]`)?.classList.add('active');
-      document.getElementById(t)?.classList.add('active');
-    }
-
-    function setCount(t,n){
-      const btn=document.querySelector(`[data-tab="${t}"]`);if(!btn)return;
-      btn.querySelector('.pt-count')?.remove();
-      const sp=document.createElement('span');sp.className='pt-count';sp.textContent=n;btn.appendChild(sp);
-    }
-
-    function renderAll(){
-      const groups=groupByStatus(),emAnd=filterByStatus('Em Andamento'),pend=filterByStatus('Pendente'),ctrl=calcTempoEmStatus();
-      renderGerencial(groups,'pt-gerencial-body');
-      renderTable(emAnd,'pt-em-andamento-body');
-      renderTable(pend,'pt-pendente-body');
-      renderControle(ctrl,'pt-controle-body');
-      setCount('pt-tab-gerencial',Object.keys(groups).length);
-      setCount('pt-tab-andamento',emAnd.length);
-      setCount('pt-tab-pendente',pend.length);
-      setCount('pt-tab-controle',ctrl.length);
-      document.getElementById('pt-results').classList.remove('hidden');
-      document.getElementById('pt-empty-state').classList.add('hidden');
-      switchTab('pt-tab-gerencial');
-    }
-
-    function loadFile(file){
-      if(!file.name.toLowerCase().endsWith('.csv')){alert('Selecione um .csv');return;}
-      const r=new FileReader();
-      r.onload=e=>{try{processCsv(e.target.result);document.getElementById('pt-filename').textContent=`📄 ${file.name} — ${allRows.length} registros`;renderAll();}catch(err){console.error(err);alert('Erro: '+err.message);}};
-      r.readAsText(file,'UTF-8');
-    }
-
-    function init(){
-      const dz=document.getElementById('pt-dropzone'),fi=document.getElementById('pt-file-input');
-      if(!dz||!fi)return;
-      dz.addEventListener('click',()=>fi.click());
-      dz.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' ')fi.click();});
-      dz.addEventListener('dragover',e=>{e.preventDefault();dz.classList.add('pt-drag-over');});
-      dz.addEventListener('dragleave',()=>dz.classList.remove('pt-drag-over'));
-      dz.addEventListener('drop',e=>{e.preventDefault();dz.classList.remove('pt-drag-over');const f=e.dataTransfer.files[0];if(f)loadFile(f);});
-      fi.addEventListener('change',()=>{if(fi.files[0])loadFile(fi.files[0]);});
-      document.querySelectorAll('.pt-tab-btn').forEach(b=>b.addEventListener('click',()=>switchTab(b.dataset.tab)));
-      document.getElementById('pt-btn-novo')?.addEventListener('click',()=>{
-        allRows=[];headers=[];
-        document.getElementById('pt-results').classList.add('hidden');
-        document.getElementById('pt-empty-state').classList.remove('hidden');
-        document.getElementById('pt-filename').textContent='';
-        fi.value='';
-      });
-    }
-    return{init};
-  })();
-  document.addEventListener('DOMContentLoaded',ProjetosTracker.init);
-  </script>
+        // Filtro por status
+        document.getElementById('pt-filter-status').addEventListener('change', function(e) {
+            const val = e.target.value.toLowerCase();
+            const rows = document.querySelectorAll('#pt-tbody tr');
+            rows.forEach(row => {
+                const status = row.querySelector('.pt-status').textContent.toLowerCase();
+                if (!val || status.includes(val)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
+    </script>
+    <script src="js/ui/header.js"></script>
+    <script src="js/pages/projetos-tracker.js"></script>
 </body>
 </html>

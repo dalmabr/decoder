@@ -9,6 +9,7 @@ const ProjetosTracker = (() => {
   // ── Estado ───────────────────────────────────────────────────────────────
   let allRows = [];      // todas as linhas (exceto header)
   let headers = [];      // linha 1
+  let controleSortState = { key: 'id', asc: true };
 
   // ── Parser CSV (equivale ao Split por aspas do VBA) ───────────────────────
   function parseCsvLine(line) {
@@ -93,47 +94,46 @@ const ProjetosTracker = (() => {
   }
 
   // ── Controle de tempo em status (espelho de ControlarStatusAtividades) ────
-  function calcTempoEmStatus() {
-    const controle = {};
-    const hoje = new Date();
+  function parseLocalDate(str) {
+    if (!str) return null;
+    const m = str.match(/(\d{2})\/(\d{2})\/(\d{4})[\s,](\d{2}:\d{2})/);
+    if (m) return new Date(`${m[3]}-${m[2]}-${m[1]}T${m[4]}`);
+    const d = new Date(str);
+    return isNaN(d) ? null : d;
+  }
 
-    for (const row of allRows) {
-      const id = row[0];
-      const status = row[2];
-      const dataModStr = row[5];
-      const dataInicioStr = row[3];
-
-      if (!id) continue;
-
-      const parseLocalDate = (s) => {
-        if (!s) return null;
-        // formato "DD/MM/YYYY HH:MM"
-        const m = s.match(/(\d{2})\/(\d{2})\/(\d{4})[\s,](\d{2}:\d{2})/);
-        if (m) return new Date(`${m[3]}-${m[2]}-${m[1]}T${m[4]}`);
-        return new Date(s);
+  function prepareControleRows() {
+    const now = new Date();
+    return allRows.map((row) => {
+      const dataInicio = parseLocalDate(row[3]);
+      const dataMod = parseLocalDate(row[5]) || now;
+      const base = row[2] === 'Em Andamento' ? now : dataMod;
+      const horas = dataInicio ? Math.max(0, (base - dataInicio) / 36e5) : 0;
+      const horasTotal = Math.round(horas * 100) / 100;
+      return {
+        id: row[0] || '',
+        tipo: row[1] || '',
+        status: row[2] || '',
+        dtInicio: row[3] || '',
+        prazoFinal: row[4] || '',
+        dtModificacao: row[5] || '',
+        resumo: row[6] || '',
+        horasTotal,
+        dias: Math.round((horasTotal / 24) * 10) / 10,
+        highlight: row[2] === 'Em Andamento' && horasTotal > 72
       };
+    });
+  }
 
-      const dataMod = parseLocalDate(dataModStr) || hoje;
-      const dataInicio = parseLocalDate(dataInicioStr) || dataMod;
-
-      if (!controle[id]) {
-        controle[id] = { id, status, dataInicio, horasTotal: 0 };
-      }
-
-      const ref = controle[id];
-
-      if (status === 'Em Andamento') {
-        const diff = (hoje - dataInicio) / 36e5;
-        ref.horasTotal = Math.round(diff * 100) / 100;
-      } else if (status === 'Pendente') {
-        const diff = (dataMod - dataInicio) / 36e5;
-        ref.horasTotal = Math.round(diff * 100) / 100;
-      }
-
-      ref.status = status;
-    }
-
-    return Object.values(controle).sort((a, b) => b.horasTotal - a.horasTotal);
+  function sortControleRows(rows, key, asc) {
+    return [...rows].sort((a, b) => {
+      const va = a[key] ?? '';
+      const vb = b[key] ?? '';
+      if (typeof va === 'number' && typeof vb === 'number') return asc ? va - vb : vb - va;
+      return asc
+        ? String(va).localeCompare(String(vb), 'pt-BR', { numeric: true })
+        : String(vb).localeCompare(String(va), 'pt-BR', { numeric: true });
+    });
   }
 
   // ── Render helpers ────────────────────────────────────────────────────────
@@ -204,28 +204,49 @@ const ProjetosTracker = (() => {
       </table>`;
   }
 
-  function renderControle(controle, containerId) {
+  function renderControle(rows, containerId) {
     const el = document.getElementById(containerId);
     if (!el) return;
 
-    if (!controle.length) { el.innerHTML = '<p class="pt-empty">Sem dados.</p>'; return; }
+    if (!rows.length) { el.innerHTML = '<p class="pt-empty">Sem dados.</p>'; return; }
 
-    const rows = controle.map(c => {
-      const dias = (c.horasTotal / 24).toFixed(1);
-      const alert = c.horasTotal > 72 && c.status === 'Em Andamento' ? ' pt-alert' : '';
-      return `<tr class="${alert}">
-        <td class="pt-id">${c.id}</td>
-        <td>${badge(c.status)}</td>
-        <td class="pt-center">${c.horasTotal}h</td>
-        <td class="pt-center">${dias}d</td>
-      </tr>`;
+    const columns = [
+      { key: 'id', label: 'ID', sortable: true },
+      { key: 'tipo', label: 'Tipo', sortable: true },
+      { key: 'status', label: 'Status', sortable: true },
+      { key: 'dtInicio', label: 'Dt. Início', sortable: true },
+      { key: 'prazoFinal', label: 'Prazo Final', sortable: true },
+      { key: 'dtModificacao', label: 'Dt. Modificação', sortable: true },
+      { key: 'resumo', label: 'Resumo', sortable: false }
+    ];
+
+    const thead = columns.map(col => {
+      const sorted = controleSortState.key === col.key;
+      const arrow = sorted ? (controleSortState.asc ? ' ▲' : ' ▼') : '';
+      return `<th class="${col.sortable ? 'sortable' : ''}" data-sort-key="${col.key}">${col.label}${arrow}</th>`;
     }).join('');
 
-    el.innerHTML = `
-      <table class="pt-table">
-        <thead><tr><th>ID</th><th>Status</th><th class="pt-center">Horas</th><th class="pt-center">Dias</th></tr></thead>
-        <tbody>${rows}</tbody>
-      </table>`;
+    const rowsHtml = rows.map(c => `
+      <tr class="${c.highlight ? ' pt-alert' : ''}">
+        <td class="pt-id">${c.id}</td>
+        <td>${c.tipo}</td>
+        <td>${badge(c.status)}</td>
+        <td class="pt-date">${c.dtInicio}</td>
+        <td class="pt-date">${c.prazoFinal}</td>
+        <td class="pt-date">${c.dtModificacao}</td>
+        <td class="pt-resumo" title="${(c.resumo || '').replace(/"/g, '&quot;')}">${c.resumo || ''}</td>
+      </tr>`).join('');
+
+    el.innerHTML = `<table class="pt-table"><thead><tr>${thead}</tr></thead><tbody>${rowsHtml}</tbody></table>`;
+    el.querySelectorAll('th.sortable').forEach(th => {
+      th.addEventListener('click', () => {
+        const key = th.dataset.sortKey;
+        if (!key) return;
+        if (controleSortState.key === key) controleSortState.asc = !controleSortState.asc;
+        else { controleSortState.key = key; controleSortState.asc = true; }
+        renderControle(sortControleRows(rows, controleSortState.key, controleSortState.asc), containerId);
+      });
+    });
   }
 
   // ── Tab switching ─────────────────────────────────────────────────────────
@@ -246,17 +267,16 @@ const ProjetosTracker = (() => {
     renderGerencial(groups,   'pt-gerencial-body');
     renderTable(emAnd,        'pt-em-andamento-body');
     renderTable(pend,         'pt-pendente-body');
-    renderControle(controle,  'pt-controle-body');
+    renderControle(sortControleRows(controle, controleSortState.key, controleSortState.asc),  'pt-controle-body');
 
     // Atualiza contadores nos tabs
-    document.querySelector('[data-tab="pt-tab-gerencial"] .pt-count')?.remove();
     document.querySelector('[data-tab="pt-tab-andamento"] .pt-count')?.remove();
     document.querySelector('[data-tab="pt-tab-pendente"] .pt-count')?.remove();
+    document.querySelector('[data-tab="pt-tab-controle"] .pt-count')?.remove();
 
-    setCount('pt-tab-gerencial', Object.keys(groups).length);
     setCount('pt-tab-andamento', emAnd.length);
     setCount('pt-tab-pendente',  pend.length);
-    setCount('pt-tab-controle',  controle.length);
+    setCount('pt-tab-controle',  allRows.length);
 
     document.getElementById('pt-results').classList.remove('hidden');
     document.getElementById('pt-empty-state').classList.add('hidden');
@@ -266,6 +286,7 @@ const ProjetosTracker = (() => {
   function setCount(tabId, n) {
     const btn = document.querySelector(`[data-tab="${tabId}"]`);
     if (!btn) return;
+    btn.querySelector('.pt-count')?.remove();
     const sp = document.createElement('span');
     sp.className = 'pt-count';
     sp.textContent = n;

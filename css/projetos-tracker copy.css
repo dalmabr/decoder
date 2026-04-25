@@ -1,0 +1,305 @@
+/* ==========================================================
+   projetos-tracker.css
+   Segue os design tokens de base.css (--terra, --verde, --marrom, --ice)
+   ========================================================== */
+
+/* ── Seção wrapper ─────────────────────────────────────────*/
+.pt-section {
+  background: white;
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  max-width: 1100px;
+  margin: var(--space-lg) auto;
+}
+
+.pt-section-title {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--marrom);
+  opacity: 0.6;
+  margin: 0 0 var(--space-md);
+}
+
+/* ── Dropzone ──────────────────────────────────────────────*/
+.pt-dropzone {
+  border: 2px dashed #c9cdd3;
+  border-radius: var(--radius-md);
+  padding: var(--space-lg) var(--space-md);
+  text-align: center;
+  cursor: pointer;
+  transition: var(--transition);
+  background: #fafafa;
+}
+
+.pt-dropzone:hover,
+.pt-dropzone.pt-drag-over {
+  border-color: var(--verde);
+  background: #f0f4f0;
+}
+
+.pt-dropzone-icon {
+  font-size: 32px;
+  margin-bottom: var(--space-xs);
+}
+
+.pt-dropzone p {
+  margin: 0;
+  color: var(--marrom);
+  opacity: 0.7;
+  font-size: 14px;
+}
+
+.pt-dropzone small {
+  font-size: 12px;
+  color: #9a9ea4;
+}
+
+.pt-filename {
+  margin-top: var(--space-xs);
+  font-size: 13px;
+  color: var(--verde);
+  font-weight: 600;
+  min-height: 20px;
+  font-family: var(--font-mono);
+}
+
+/* ── Resultados ────────────────────────────────────────────*/
+#pt-results {
+  margin-top: var(--space-md);
+}
+
+.pt-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-sm);
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+}
+
+/* ── Tabs ──────────────────────────────────────────────────*/
+.pt-tabs {
+  display: flex;
+  gap: var(--space-xs);
+  flex-wrap: wrap;
+}
+
+.pt-tab-btn {
+  padding: 6px 14px;
+  border: 1.5px solid #dde0e4;
+  border-radius: 50px;
+  background: white;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--marrom);
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pt-tab-btn:hover {
+  border-color: var(--verde);
+  color: var(--verde);
+}
+
+.pt-tab-btn.active {
+  background: var(--marrom);
+  border-color: var(--marrom);
+  color: white;
+}
+
+.pt-count {
+  background: rgba(255,255,255,0.25);
+  color: inherit;
+  border-radius: 50px;
+  padding: 1px 7px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.pt-tab-btn:not(.active) .pt-count {
+  background: #e4e7e4;
+  color: var(--marrom);
+}
+
+/* ── Painéis de conteúdo ───────────────────────────────────*/
+.pt-tab-panel {
+  display: none;
+}
+
+.pt-tab-panel.active {
+  display: block;
+}
+
+/* ── Botão novo arquivo ────────────────────────────────────*/
+.pt-btn-novo {
+  padding: 6px 14px;
+  border-radius: 50px;
+  border: 1.5px solid #dde0e4;
+  background: white;
+  font-size: 13px;
+  font-weight: 600;
+  color: #6b7280;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.pt-btn-novo:hover {
+  border-color: #e06060;
+  color: #e06060;
+}
+
+/* ── Tabela ────────────────────────────────────────────────*/
+.pt-table-wrap {
+  overflow-x: auto;
+  margin-top: var(--space-sm);
+}
+
+.pt-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 12.5px;
+}
+
+.pt-table th {
+  background: var(--marrom);
+  color: white;
+  padding: 9px var(--space-xs);
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.pt-table th:first-child { border-radius: var(--radius-sm) 0 0 0; }
+.pt-table th:last-child  { border-radius: 0 var(--radius-sm) 0 0; }
+
+.pt-table td {
+  padding: 8px var(--space-xs);
+  border-bottom: 1px solid #f0f0f0;
+  vertical-align: middle;
+}
+
+.pt-table tfoot td {
+  font-weight: 700;
+  border-top: 2px solid #e0e0e0;
+  border-bottom: none;
+  font-size: 13px;
+}
+
+.pt-table tbody tr:hover td {
+  background: #f8f9fa;
+}
+
+.pt-row-even td { background: #f9fafb; }
+.pt-row-odd  td { background: white; }
+
+.pt-id {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: #4b5563;
+  white-space: nowrap;
+}
+
+.pt-date {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  white-space: nowrap;
+  color: #6b7280;
+}
+
+.pt-resumo {
+  max-width: 280px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--marrom);
+}
+
+.pt-center { text-align: center; }
+.pt-bold   { font-weight: 700; }
+
+/* ── Barra de progresso ────────────────────────────────────*/
+.pt-bar-wrap {
+  background: #e9ecef;
+  border-radius: 50px;
+  height: 6px;
+  width: 100px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 6px;
+}
+
+.pt-bar {
+  background: var(--verde);
+  height: 100%;
+  border-radius: 50px;
+  transition: width 0.5s ease;
+}
+
+.pt-pct {
+  font-size: 11px;
+  font-weight: 600;
+  color: #6b7280;
+  vertical-align: middle;
+}
+
+/* ── Badges de status ──────────────────────────────────────*/
+.pt-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 50px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+
+.badge-andamento {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.badge-pendente {
+  background: #fef9c3;
+  color: #92400e;
+}
+
+.badge-concluido {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.badge-cancelado {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.badge-default {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+/* ── Linha de alerta (tempo elevado) ───────────────────────*/
+.pt-alert td {
+  background: #fff7ed !important;
+}
+
+.pt-alert:hover td {
+  background: #ffedd5 !important;
+}
+
+/* ── Empty state ───────────────────────────────────────────*/
+.pt-empty {
+  text-align: center;
+  color: #9ca3af;
+  font-size: 13px;
+  padding: var(--space-lg) 0;
+}
