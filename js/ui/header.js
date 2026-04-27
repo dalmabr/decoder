@@ -53,6 +53,18 @@
                     </div>
                 </div>
 
+                <div class="relative" id="dd-projetos" data-perm="view_projetos">
+                    <button type="button" data-dd-toggle class="flex items-center gap-1 px-3 py-2 text-sm font-medium text-marrom hover:text-terra hover:bg-slate-50 rounded-lg transition-colors" aria-expanded="false">
+                        Projetos
+                        <svg class="w-4 h-4 text-marrom/60 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div data-dd-menu class="absolute top-full left-0 pt-2 w-56 z-50 hidden">
+                        <div class="bg-white rounded-xl shadow-xl border border-slate-100 py-2 overflow-hidden">
+                            <a href="index.html?view=projetos" data-view="projetos" data-perm="view_projetos" class="block px-4 py-2.5 text-sm text-marrom hover:text-terra hover:bg-[#FDFBF7] transition-colors">Todos os Projetos</a>
+                            <a href="index.html?view=projetos" data-view="projetos" data-perm="view_projetos" class="block px-4 py-2.5 text-sm text-marrom hover:text-terra hover:bg-[#FDFBF7] transition-colors">Em Andamento</a>                            
+                        </div>
+                    </div>
+                </div>
                 <div class="w-px h-6 bg-slate-200 mx-1"></div>
                 <a href="index.html?view=all" data-view="all" data-perm="view_all" class="px-3 py-2 text-sm font-medium text-marrom hover:text-terra hover:bg-slate-50 rounded-lg transition-colors pr-0 pl-1">Todos os Registros</a>
             </div>

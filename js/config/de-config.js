@@ -29,7 +29,7 @@ export const deConfig = {
     34: { name: 'Acceptance Environment Data (TLV Format)', type: 'LLLVAR', length:'bcd', unit: 'digits', format: 'b' },
     35: { name: 'Track 2 Data', type: 'LLVAR', length:'bcd', unit: 'digits', format: 'n' },
     37: { name: 'Retrieval Reference Number', type: 'Fixo', length:12, unit: 'digits', format: 'e' },
-    38: { name: 'Authorization Identification Response', type: 'Fixo', length:6, unit: 'digits', format: 'n' },
+    38: { name: 'Authorization Identification Response', type: 'Fixo', length:6, unit: 'digits', format: 'e' },
     39: { name: 'Response Code', type: 'Fixo', length:2, unit: 'digits', format: 'e' },
     41: { name: 'Terminal ID', type: 'Fixo', length:8, unit: 'digits', format: 'e' },
     42: { name: 'Card Acceptor Identification Code', type: 'Fixo', length:15, unit: 'digits', format: 'e' },

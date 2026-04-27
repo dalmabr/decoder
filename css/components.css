@@ -882,22 +882,28 @@
 }
 
 .data-table-programas,
+.data-table-projetos,
 .data-table-tabelas {
     table-layout: fixed;
+    width: 100%;
 }
 
 .data-table-programas th,
 .data-table-programas td,
+.data-table-projetos th,
+.data-table-projetos td,
 .data-table-tabelas th,
 .data-table-tabelas td {
+    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
 .data-table-programas td:nth-child(3),
 .data-table-tabelas td:nth-child(2) {
-    white-space: normal;
+    white-space: nowrap;
 }
+
 
 .data-table th,
 .data-table-short th,

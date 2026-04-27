@@ -4,7 +4,7 @@ const $ = q => document.querySelector(q);
 /* ----------  estado global  ---------- */
 let currentRoot = null;
 let breadcrumbTrail = ['ATE730'];
-
+let currentViewCleanup = null;
 /* ----------  monta Ã¡rvore  ---------- */
 const elementMap = new Map();
 
@@ -361,6 +361,10 @@ function showUtilitarios() {
 
 /* ----------  menu header  ----------- */
 function openView(view) {
+    if (typeof currentViewCleanup === 'function') {
+        currentViewCleanup();
+        currentViewCleanup = null;
+    }
     console.log("Entrei no view", view)
     if (view === 'fluxo') showTodosProgramas();
     if (view === 'tabelas') showTodasTabelas();
@@ -369,6 +373,7 @@ function openView(view) {
     if (view === 'utilitarios') showUtilitarios();
     if (view === 'all') showAllRecords();
     if (view === 'busca') buscarVariaveis();
+    if (view === 'projetos') todosProjetos();
 }
 
 document.addEventListener('click', e => {

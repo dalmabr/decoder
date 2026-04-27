@@ -1,0 +1,228 @@
+/* ==========================================================
+   projetos-tracker.css  —  Alinhado ao padrão "Busca por Colunas"
+   ========================================================== */
+
+/* ── Seção wrapper ─────────────────────────────────────────*/
+.pt-section {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  max-width: 1100px;
+  margin: 24px auto;
+}
+
+/* ── Título da view (igual ao "Busca por Colunas") ─────────*/
+.pt-view-title {
+  font-family: 'Sohne', 'Inter', sans-serif;
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 700;
+  color: #3C2E26;
+  text-align: left;
+  width: 100%;
+  margin: 0 0 1rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(196, 164, 132, 0.55);
+  line-height: 1.2;
+}
+
+/* ── Filtros: busca + status ───────────────────────────────*/
+.pt-filters {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+
+.pt-search {
+  width: 100%;
+  max-width: 420px;
+  padding: 8px 14px;
+  border: 1px solid #d6c4b0;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-family: 'Inter', sans-serif;
+  color: #3C2E26;
+  background: #fff;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.pt-search:focus {
+  border-color: #C4A484;
+  box-shadow: 0 0 0 3px rgba(196,164,132,0.18);
+}
+
+.pt-filter-status {
+  min-width: 200px;
+  height: 36px;
+  padding: 0 12px;
+  border: 1px solid #d6c4b0;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-family: 'Inter', sans-serif;
+  color: #3C2E26;
+  background: #fff;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+}
+
+.pt-filter-status:focus {
+  border-color: #C4A484;
+  box-shadow: 0 0 0 3px rgba(196,164,132,0.18);
+}
+
+/* ── Botão novo arquivo ────────────────────────────────────*/
+.pt-btn-novo {
+  padding: 6px 14px;
+  border-radius: 50px;
+  border: 1.5px solid #dde0e4;
+  background: white;
+  font-size: 13px;
+  font-weight: 600;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-left: auto;
+}
+
+.pt-btn-novo:hover {
+  border-color: #e06060;
+  color: #e06060;
+}
+
+/* ── Tabela ────────────────────────────────────────────────*/
+.pt-table-wrap {
+  overflow-x: auto;
+  margin-top: 8px;
+}
+
+.pt-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(60,46,38,0.08);
+  table-layout: fixed;
+}
+
+.pt-table th {
+  background: #3C2E26;
+  color: #f5f0eb;
+  padding: 10px 14px;
+  font-weight: 600;
+  font-size: 0.78rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.pt-table td {
+  padding: 9px 14px;
+  color: #3C2E26;
+  border-bottom: 1px solid #ede8e2;
+  vertical-align: middle;
+  line-height: 1.4;
+  height: 40px;
+}
+
+.pt-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.pt-table tbody tr:hover td {
+  background: #fdf8f3;
+}
+
+.pt-table tbody tr:nth-child(even) td {
+  background: #faf7f4;
+}
+
+.pt-table tbody tr:nth-child(even):hover td {
+  background: #fdf8f3;
+}
+
+/* ── Tipografia das células ────────────────────────────────*/
+.pt-id {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: #4b5563;
+  white-space: nowrap;
+}
+
+.pt-date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11.5px;
+  white-space: nowrap;
+  color: #6b7280;
+}
+
+.pt-resumo {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #3C2E26;
+}
+
+/* ── Status neutro (sem cores individuais) ─────────────────*/
+.pt-status {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 50px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  background: #f3f4f6;
+  color: #6b5744;
+}
+
+/* ── Paginação ─────────────────────────────────────────────*/
+.pt-pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 14px;
+  padding: 8px 4px;
+  font-size: 0.83rem;
+  color: #6b5744;
+}
+
+.pt-pag-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.pt-pag-btn {
+  padding: 6px 14px;
+  border: 1px solid #d6b89a;
+  border-radius: 8px;
+  background: #fff;
+  color: #8b5e3c;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.pt-pag-btn:hover:not(:disabled) {
+  background: #f3e5d4;
+  border-color: #C4A484;
+}
+
+.pt-pag-btn:disabled {
+  opacity: 0.38;
+  cursor: not-allowed;
+}
+
+/* ── Empty state ───────────────────────────────────────────*/
+.pt-empty {
+  text-align: center;
+  color: #9ca3af;
+  font-size: 13px;
+  padding: 32px 0;
+}

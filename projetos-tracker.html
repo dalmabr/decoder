@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAT-SIA | Plataforma Técnica de Meios de Pagamento</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/iso-decoder.css">
+    <link rel="stylesheet" href="css/projetos-tracker.css">
+</head>
+<body>
+<body class="decoders-page" data-page="decodificadores">
+    <div id="site-header"></div>
+
+
+    <!-- Conteúdo principal -->
+    <main id="app" style="padding-top: 80px;">
+        <section class="pt-section">
+            
+          
+            <h1 class="pt-view-title block px-4 py-2.5 text-sm text-marrom hover:text-terra hover:bg-[#FDFBF7] transition-colors">Status dos Itens de Backlog</h1>
+
+            <!-- Filtros: apenas busca + status -->
+            <div class="pt-filters">
+                <input type="text" class="pt-search" id="pt-search" placeholder="Pesquisar em todas as colunas...">
+                <select class="pt-filter-status" id="pt-filter-status">
+                    <option value="">Todas as Situações</option>
+                    <option value="andamento">Em andamento</option>
+                    <option value="atendimento">Em atendimento</option>
+                    <option value="concluida">Concluída</option>
+                    <option value="cancelada">Cancelada</option>
+                    <option value="pendente">Pendente</option>
+                </select>
+                <button class="pt-btn-novo">✕ Novo arquivo</button>
+            </div>
+
+            <!-- Tabela -->
+            <div class="pt-table-wrap">
+                <table class="pt-table" id="pt-table">
+                    <thead>
+                        <tr>
+                            <th style="width:8%">ID ▲</th>
+                            <th style="width:16%">TIPO</th>
+                            <th style="width:12%">STATUS</th>
+                            <th style="width:12%">DT. INÍCIO</th>
+                            <th style="width:12%">PRAZO FINAL</th>
+                            <th style="width:14%">DT. MODIFICAÇÃO</th>
+                            <th style="width:26%">RESUMO</th>
+                        </tr>
+                    </thead>
+                    <tbody id="pt-tbody">
+                        <!-- Dados de exemplo -->
+                        <tr>
+                            <td class="pt-id">1524185</td>
+                            <td>Demanda de Manutenção de Sistemas</td>
+                            <td><span class="pt-status">CANCELADA</span></td>
+                            <td class="pt-date">—</td>
+                            <td class="pt-date">—</td>
+                            <td class="pt-date">25/02/2019 16:44</td>
+                            <td class="pt-resumo">[AUTORIZAÇÃO] SIPCS/SIA - Criação de Filtro de Busca por PIN e P...</td>
+                        </tr>
+                        <tr>
+                            <td class="pt-id">1529465</td>
+                            <td>Demanda de Manutenção de Sistemas</td>
+                            <td><span class="pt-status">CANCELADA</span></td>
+                            <td class="pt-date">—</td>
+                            <td class="pt-date">—</td>
+                            <td class="pt-date">25/02/2019 16:44</td>
+                            <td class="pt-resumo">BR201605395 - [AUTORIZAÇÃO] SIPCS/SIA - Implantação no SIA pa...</td>
+                        </tr>
+                        <tr>
+                            <td class="pt-id">1542516</td>
+                            <td>Serviço Técnico Especializado</td>
+                            <td><span class="pt-status">CONCLUÍDO</span></td>
+                            <td class="pt-date">—</td>
+                            <td class="pt-date">—</td>
+                            <td class="pt-date">24/05/2017 15:31</td>
+                            <td class="pt-resumo">[Desenvolvimento Assistido] [Autorização] SIPCS - SIA - ENVIO ONL...</td>
+                        </tr>
+                        <tr>
+                            <td class="pt-id">1656212</td>
+                            <td>Tarefa</td>
+                            <td><span class="pt-status">CONCLUÍDA</span></td>
+                            <td class="pt-date">03/11/2016 14:00</td>
+                            <td class="pt-date">20/11/2016 18:00</td>
+                            <td class="pt-date">23/11/2016 12:26</td>
+                            <td class="pt-resumo">[Autorizador] Analista de negócio (8hrs)</td>
+                        </tr>
+                        <tr>
+                            <td class="pt-id">1656220</td>
+                            <td>Tarefa</td>
+                            <td><span class="pt-status">CONCLUÍDA</span></td>
+                            <td class="pt-date">03/11/2016 10:00</td>
+                            <td class="pt-date">20/11/2016 18:00</td>
+                            <td class="pt-date">23/11/2016 12:26</td>
+                            <td class="pt-resumo">[Autorizador] Analista de negócio (4hrs)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Paginação -->
+            <div class="pt-pagination">
+                <span id="pt-info">Mostrando 1–5 de 4366</span>
+                <div class="pt-pag-buttons">
+                    <button class="pt-pag-btn" disabled>Anterior</button>
+                    <button class="pt-pag-btn">Próximo</button>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <script>
+        // Busca simples em todas as colunas
+        document.getElementById('pt-search').addEventListener('input', function(e) {
+            const term = e.target.value.toLowerCase();
+            const rows = document.querySelectorAll('#pt-tbody tr');
+            rows.forEach(row => {
+                const text = row.textContent.toLowerCase();
+                row.style.display = text.includes(term) ? '' : 'none';
+            });
+        });
+
+        // Filtro por status
+        document.getElementById('pt-filter-status').addEventListener('change', function(e) {
+            const val = e.target.value.toLowerCase();
+            const rows = document.querySelectorAll('#pt-tbody tr');
+            rows.forEach(row => {
+                const status = row.querySelector('.pt-status').textContent.toLowerCase();
+                if (!val || status.includes(val)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
+    </script>
+    <script src="js/ui/header.js"></script>
+    <script src="js/pages/projetos-tracker.js"></script>
+</body>
+</html>
